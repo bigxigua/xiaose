@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: org.b3log:latke-repository-mysql:2.4.56">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/b3log/latke-repository-mysql/2.4.56/latke-repository-mysql-2.4.56.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/latke-repository-mysql/latke-repository-mysql-2.4.56-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/b3log/latke-repository-mysql/2.4.56/latke-repository-mysql-2.4.56-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/latke-repository-mysql/latke-repository-mysql-2.4.56-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/b3log/latke-repository-mysql/2.4.56/latke-repository-mysql-2.4.56-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
