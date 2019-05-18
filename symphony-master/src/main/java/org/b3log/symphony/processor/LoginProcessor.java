@@ -164,9 +164,6 @@ public class LoginProcessor {
     @Inject
     private TagQueryService tagQueryService;
 
-    @Inject
-    private SmsService sms;
-
     /**
      * Next guide step.
      *
@@ -492,8 +489,6 @@ public class LoginProcessor {
 
         dataModelService.fillHeaderAndFooter(context, dataModel);
     }
-
-
 
     /**
      * Register Step 1.

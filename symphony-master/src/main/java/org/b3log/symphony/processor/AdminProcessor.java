@@ -119,7 +119,7 @@ import java.util.*;
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
  * @author Bill Ho
  * @author <a href="http://vanessa.b3log.org">Liyuan Li</a>
- * @version 2.30.1.1, Jan 5, 2019
+ * @version 2.30.1.2, May 12, 2019
  * @since 1.1.0
  */
 @RequestProcessor
@@ -469,13 +469,12 @@ public class AdminProcessor {
         requestJSONObject.put(Pagination.PAGINATION_PAGE_SIZE, pageSize);
         requestJSONObject.put(Pagination.PAGINATION_WINDOW_SIZE, windowSize);
 
-        final Map<String, Class<?>> fields = new HashMap<>();
-        fields.put(Keys.OBJECT_ID, String.class);
-        fields.put(Breezemoon.BREEZEMOON_CONTENT, String.class);
-        fields.put(Breezemoon.BREEZEMOON_CREATED, Long.class);
-        fields.put(Breezemoon.BREEZEMOON_AUTHOR_ID, String.class);
-        fields.put(Breezemoon.BREEZEMOON_STATUS, Integer.class);
-
+        final List<String> fields = new ArrayList<>();
+        fields.add(Keys.OBJECT_ID);
+        fields.add(Breezemoon.BREEZEMOON_CONTENT);
+        fields.add(Breezemoon.BREEZEMOON_CREATED);
+        fields.add(Breezemoon.BREEZEMOON_AUTHOR_ID);
+        fields.add(Breezemoon.BREEZEMOON_STATUS);
         final JSONObject result = breezemoonQueryService.getBreezemoons(requestJSONObject, fields);
         dataModel.put(Breezemoon.BREEZEMOONS, CollectionUtils.jsonArrayToList(result.optJSONArray(Breezemoon.BREEZEMOONS)));
 
@@ -1838,18 +1837,17 @@ public class AdminProcessor {
             requestJSONObject.put(Keys.OBJECT_ID, articleId);
         }
 
-        final Map<String, Class<?>> articleFields = new HashMap<>();
-        articleFields.put(Keys.OBJECT_ID, String.class);
-        articleFields.put(Article.ARTICLE_TITLE, String.class);
-        articleFields.put(Article.ARTICLE_PERMALINK, String.class);
-        articleFields.put(Article.ARTICLE_CREATE_TIME, Long.class);
-        articleFields.put(Article.ARTICLE_VIEW_CNT, Integer.class);
-        articleFields.put(Article.ARTICLE_COMMENT_CNT, Integer.class);
-        articleFields.put(Article.ARTICLE_AUTHOR_ID, String.class);
-        articleFields.put(Article.ARTICLE_TAGS, String.class);
-        articleFields.put(Article.ARTICLE_STATUS, Integer.class);
-        articleFields.put(Article.ARTICLE_STICK, Long.class);
-
+        final List<String> articleFields = new ArrayList<>();
+        articleFields.add(Keys.OBJECT_ID);
+        articleFields.add(Article.ARTICLE_TITLE);
+        articleFields.add(Article.ARTICLE_PERMALINK);
+        articleFields.add(Article.ARTICLE_CREATE_TIME);
+        articleFields.add(Article.ARTICLE_VIEW_CNT);
+        articleFields.add(Article.ARTICLE_COMMENT_CNT);
+        articleFields.add(Article.ARTICLE_AUTHOR_ID);
+        articleFields.add(Article.ARTICLE_TAGS);
+        articleFields.add(Article.ARTICLE_STATUS);
+        articleFields.add(Article.ARTICLE_STICK);
         final JSONObject result = articleQueryService.getArticles(requestJSONObject, articleFields);
         dataModel.put(Article.ARTICLES, CollectionUtils.jsonArrayToList(result.optJSONArray(Article.ARTICLES)));
 
@@ -1962,15 +1960,14 @@ public class AdminProcessor {
         requestJSONObject.put(Pagination.PAGINATION_PAGE_SIZE, pageSize);
         requestJSONObject.put(Pagination.PAGINATION_WINDOW_SIZE, windowSize);
 
-        final Map<String, Class<?>> commentFields = new HashMap<>();
-        commentFields.put(Keys.OBJECT_ID, String.class);
-        commentFields.put(Comment.COMMENT_CREATE_TIME, String.class);
-        commentFields.put(Comment.COMMENT_AUTHOR_ID, String.class);
-        commentFields.put(Comment.COMMENT_ON_ARTICLE_ID, String.class);
-        commentFields.put(Comment.COMMENT_SHARP_URL, String.class);
-        commentFields.put(Comment.COMMENT_STATUS, Integer.class);
-        commentFields.put(Comment.COMMENT_CONTENT, String.class);
-
+        final List<String> commentFields = new ArrayList<>();
+        commentFields.add(Keys.OBJECT_ID);
+        commentFields.add(Comment.COMMENT_CREATE_TIME);
+        commentFields.add(Comment.COMMENT_AUTHOR_ID);
+        commentFields.add(Comment.COMMENT_ON_ARTICLE_ID);
+        commentFields.add(Comment.COMMENT_SHARP_URL);
+        commentFields.add(Comment.COMMENT_STATUS);
+        commentFields.add(Comment.COMMENT_CONTENT);
         final JSONObject result = commentQueryService.getComments(requestJSONObject, commentFields);
         dataModel.put(Comment.COMMENTS, CollectionUtils.jsonArrayToList(result.optJSONArray(Comment.COMMENTS)));
 
@@ -2134,20 +2131,19 @@ public class AdminProcessor {
             requestJSONObject.put(Tag.TAG_TITLE, tagTitle);
         }
 
-        final Map<String, Class<?>> tagFields = new HashMap<>();
-        tagFields.put(Keys.OBJECT_ID, String.class);
-        tagFields.put(Tag.TAG_TITLE, String.class);
-        tagFields.put(Tag.TAG_DESCRIPTION, String.class);
-        tagFields.put(Tag.TAG_ICON_PATH, String.class);
-        tagFields.put(Tag.TAG_COMMENT_CNT, Integer.class);
-        tagFields.put(Tag.TAG_REFERENCE_CNT, Integer.class);
-        tagFields.put(Tag.TAG_FOLLOWER_CNT, Integer.class);
-        tagFields.put(Tag.TAG_STATUS, Integer.class);
-        tagFields.put(Tag.TAG_GOOD_CNT, Integer.class);
-        tagFields.put(Tag.TAG_BAD_CNT, Integer.class);
-        tagFields.put(Tag.TAG_URI, String.class);
-        tagFields.put(Tag.TAG_CSS, String.class);
-
+        final List<String> tagFields = new ArrayList<>();
+        tagFields.add(Keys.OBJECT_ID);
+        tagFields.add(Tag.TAG_TITLE);
+        tagFields.add(Tag.TAG_DESCRIPTION);
+        tagFields.add(Tag.TAG_ICON_PATH);
+        tagFields.add(Tag.TAG_COMMENT_CNT);
+        tagFields.add(Tag.TAG_REFERENCE_CNT);
+        tagFields.add(Tag.TAG_FOLLOWER_CNT);
+        tagFields.add(Tag.TAG_STATUS);
+        tagFields.add(Tag.TAG_GOOD_CNT);
+        tagFields.add(Tag.TAG_BAD_CNT);
+        tagFields.add(Tag.TAG_URI);
+        tagFields.add(Tag.TAG_CSS);
         final JSONObject result = tagQueryService.getTags(requestJSONObject, tagFields);
         dataModel.put(Tag.TAGS, CollectionUtils.jsonArrayToList(result.optJSONArray(Tag.TAGS)));
 
@@ -2277,14 +2273,13 @@ public class AdminProcessor {
             requestJSONObject.put(Domain.DOMAIN_TITLE, domainTitle);
         }
 
-        final Map<String, Class<?>> domainFields = new HashMap<>();
-        domainFields.put(Keys.OBJECT_ID, String.class);
-        domainFields.put(Domain.DOMAIN_TITLE, String.class);
-        domainFields.put(Domain.DOMAIN_DESCRIPTION, String.class);
-        domainFields.put(Domain.DOMAIN_ICON_PATH, String.class);
-        domainFields.put(Domain.DOMAIN_STATUS, String.class);
-        domainFields.put(Domain.DOMAIN_URI, String.class);
-
+        final List<String> domainFields = new ArrayList<>();
+        domainFields.add(Keys.OBJECT_ID);
+        domainFields.add(Domain.DOMAIN_TITLE);
+        domainFields.add(Domain.DOMAIN_DESCRIPTION);
+        domainFields.add(Domain.DOMAIN_ICON_PATH);
+        domainFields.add(Domain.DOMAIN_STATUS);
+        domainFields.add(Domain.DOMAIN_URI);
         final JSONObject result = domainQueryService.getDomains(requestJSONObject, domainFields);
         dataModel.put(Common.ALL_DOMAINS, CollectionUtils.jsonArrayToList(result.optJSONArray(Domain.DOMAINS)));
 
