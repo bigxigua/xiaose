@@ -18,14 +18,20 @@
 
 -->
 <li id="${comment.oId}"
-    class="<#if comment.commentStatus == 1>cmt-shield</#if><#if comment.commentNice || comment.commentQnAOffered == 1> cmt-perfect</#if><#if comment.commentReplyCnt != 0> cmt-selected</#if>">
+    class="${(isSys == 'true')?string('comment_li_sys','7')} <#if comment.commentStatus == 1>cmt-shield</#if><#if comment.commentNice || comment.commentQnAOffered == 1> cmt-perfect</#if><#if comment.commentReplyCnt != 0> cmt-selected</#if>">
     <div class="fn-flex">
-        <div>
+        <div class="comment_li_sys_left">
             <#if comment.commentAnonymous == 0>
-                <a rel="nofollow" href="${servePath}/member/${comment.commentAuthorName}"></#if>
-            <div class="avatar tooltipped tooltipped-se"
-                 aria-label="${comment.commentAuthorName}" style="background-image:url('${comment.commentAuthorThumbnailURL}')"></div>
-            <#if comment.commentAnonymous == 0></a></#if>
+                <a rel="nofollow" style="background-image:url('${comment.commentAuthorThumbnailURL}')" class="avatar avatar_link" href="${servePath}/member/${comment.commentAuthorName}"></a>
+                <a rel="author"
+                   href="${servePath}/member/${comment.commentAuthorName}"
+                   class="comment_author_name">${comment.commentAuthorName}</a>
+            </#if>
+            <#if comment.commentAnonymous != 0>
+                <div class="avatar tooltipped tooltipped-se avatar_link"
+                     aria-label="${comment.commentAuthorName}" style="background-image:url('${comment.commentAuthorThumbnailURL}')"></div>
+                <div class="comment_author_name">${comment.commentAuthorName}</div>
+            </#if>
         </div>
         <div class="fn-flex-1">
             <div class="comment-get-comment list"></div>
