@@ -308,6 +308,8 @@ public final class Symphonys {
      */
     public static final boolean QN_ENABLED = "qiniu".equalsIgnoreCase(UPLOAD_CHANNEL);
 
+    public static final boolean WEED_ENABLED = "weedfs".equalsIgnoreCase(UPLOAD_CHANNEL);
+
     /**
      * 允许上传图片最大值，单位字节.
      */
@@ -766,6 +768,10 @@ public final class Symphonys {
      * 短信accessSecret
      */
     public static final String SMS_ACCESS_SECRET = get("sms.accessSecret");
+
+    public static final String WEEDFS_IP = get("weedfs.ip");
+
+    public static final Integer WEEDFS_PORT = getInt("weedfs.port");
 
     /**
      * 保留标签，只有管理员可以使用.

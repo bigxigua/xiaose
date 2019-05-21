@@ -43,6 +43,7 @@ import org.b3log.latke.util.Strings;
 import org.b3log.latke.util.URLs;
 import org.b3log.symphony.SymphonyServletListener;
 import org.b3log.symphony.model.Common;
+import org.b3log.symphony.service.SeaweedFSUtil;
 import org.b3log.symphony.util.*;
 import org.json.JSONObject;
 
@@ -55,6 +56,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 import static org.b3log.symphony.util.Symphonys.QN_ENABLED;
+import static org.b3log.symphony.util.Symphonys.WEED_ENABLED;
 
 /**
  * File upload to local.
@@ -77,6 +79,9 @@ public class FileUploadProcessor {
      */
     @Inject
     private LangPropsService langPropsService;
+
+    @Inject
+    private SeaweedFSUtil fsUtil;
 
     /**
      * Gets file by the specified URL.
@@ -233,7 +238,12 @@ public class FileUploadProcessor {
                 final String uuid = StringUtils.substring(UUID.randomUUID().toString().replaceAll("-", ""), 0, 8);
                 fileName = name + '-' + uuid + "." + suffix;
                 fileName = genFilePath(fileName);
-                if (QN_ENABLED) {
+                if (WEED_ENABLED) {
+                    Map<String, String> r = fsUtil.uploadFile(fileName, files.get(i).getFileInputStream());
+                    if (r.containsKey(SeaweedFSUtil.FILE_URL)) {
+                        succMap.put(originalName, r.get(SeaweedFSUtil.FILE_URL));
+                    }
+                } else if (QN_ENABLED) {
                     bytes = fileBytes.get(i);
                     final String contentType = file.getHeader().getContentType();
                     uploadManager.asyncPut(bytes, fileName, uploadToken, null, contentType, false, (key, r) -> {

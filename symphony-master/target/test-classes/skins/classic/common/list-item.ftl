@@ -29,7 +29,9 @@
             </#if>
 
             <#if article.articleViewCount != 0>
-                <a class="ft-fade" href="${servePath}${article.articlePermalink}"><span class="article-level<#if article.articleViewCount lt 400>${(article.articleViewCount/100)?int}<#else>4</#if>"><#if article.articleViewCount < 1000>${article.articleViewCount}<#else>${article.articleViewCntDisplayFormat}</#if></span> ${viewLabel}</a>
+                <a class="ft-fade" href="${servePath}${article.articlePermalink}">
+                    <span class="article-level<#if article.articleViewCount lt 400>${(article.articleViewCount/100)?int}<#else>4</#if>"><#if article.articleViewCount < 1000>${article.articleViewCount}<#else>${article.articleViewCntDisplayFormat}</#if></span>
+                    ${viewLabel}</a>
             </#if>
 
             <#if article.articleQnAOfferPoint != 0>

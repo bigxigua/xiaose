@@ -63,10 +63,46 @@
         <div class="article-body">
             <div class="wrapper">
                 <div class="article-info fn-flex">
-                    <#if article.articleAnonymous == 0>
-                        <a rel="author" href="${servePath}/member/${article.articleAuthorName}"></#if><div
-                        class="avatar-mid tooltipped tooltipped-se" aria-label="${article.articleAuthorName}" style="background-image:url('${article.articleAuthorThumbnailURL48}')"></div><#if article.articleAnonymous == 0></a></#if>
-                    <div class="fn-flex-1 fn-ellipsis">
+                    <div class="article_sym_block">
+                        <#if article.articleAnonymous == 0>
+                        <a rel="author" href="${servePath}/member/${article.articleAuthorName}"></#if>
+                            <div class="avatar-sym avatar-mid tooltipped tooltipped-se" aria-label="${article.articleAuthorName}" style="background-image:url('${article.articleAuthorThumbnailURL48}')"></div>
+                        <#if article.articleAnonymous == 0></a></#if>
+                        <#list article.articleTagObjs as articleTag>
+                            <a rel="tag" class="tag" href="${servePath}/tag/${articleTag.tagURI}">${articleTag.tagTitle}</a>
+                        </#list>
+                        <div class="article_infos_sym">
+                            <div class="article_info">
+                                <div class="article_info_count">1111</div>
+                                <div class="article_info_title">关注</div>
+                            </div>
+                            <div class="article_info">
+                                <div class="article_info_count">1111</div>
+                                <div class="article_info_title">赞同</div>
+                            </div>
+                            <div class="article_info">
+                                <div class="article_info_count">1111</div>
+                                <div class="article_info_title">回贴</div>
+                            </div>
+                        </div>
+                        <div class="follows">
+                            <#assign follows=[1,2,3,4,5] />
+                            <#list follows as follow>
+                                <a rel="tag" class="follow" href="#" style="background-image:url('${article.articleAuthorThumbnailURL48}')"></a>
+                            </#list>
+                            <div class="dot">...</div>
+                        </div>
+                        <#if isLoggedIn && !isFollowing>
+                            <div class="follow_btn"
+                            <#if permissions["commonWatchArticle"].permissionGrant>
+                                onclick="Util.follow(this, '${article.oId}', 'article-watch', ${article.articleWatchCnt})"
+                            <#else>
+                                onclick="Article.permissionTip(Label.noPermissionLabel)"
+                            </#if>
+                            >关注</div>
+                        </#if>
+                    </div>
+                    <div class="fn-flex-1 fn-ellipsis article_content_sym">
                         <#if article.articleAnonymous == 0>
                             <a rel="author" href="${servePath}/member/${article.articleAuthorName}" class="ft-gray"></#if><strong class="ft-gray">${article.articleAuthorName}</strong><#if article.articleAnonymous == 0></a></#if>
 
@@ -177,6 +213,17 @@
                     </div>
                 </div>
                 </#if>
+
+                <#if discussionViewable>
+                    <div class="comment__reply" onclick="Comment._toggleReply()"  data-hasPermission="${permissions['commonAddComment'].permissionGrant?c}">
+                        <div class="fn__flex">
+                            <span class="avatar" style="background-image: url(&quot;https://img.hacpai.com/avatar/1558190119022?imageView2/1/w/48/h/48/interlace/0/q/100&quot;);"></span>
+
+                            <span class="reply__text fn-flex-1 commentToggle">请输入回帖内容
+                        ...</span>
+                        </div>
+                    </div>
+                </#if>
             </div>
         </div>
         <div class="main <#if article.articleComments?size == 0> fn-none</#if>">
@@ -286,6 +333,7 @@
                             <#list article.articleComments as comment>
                             <#assign notificationCmtIds = notificationCmtIds + comment.oId>
                             <#if comment_has_next><#assign notificationCmtIds = notificationCmtIds + ","></#if>
+                            <#assign isSys = "true">
                             <#include 'common/comment.ftl' />
                             </#list>
                         </ul>

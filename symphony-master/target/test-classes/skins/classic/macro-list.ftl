@@ -25,7 +25,8 @@
         <#list listData as article>
         <#assign articleIds = articleIds + article.oId>
         <#if article_has_next><#assign articleIds = articleIds + ","></#if>
-        <#include "common/list-item.ftl">
+        <#include "common/list-item-sym.ftl">
+<#--        <#include "common/list-item.ftl">-->
         </#list>
     </ul>
 </div>

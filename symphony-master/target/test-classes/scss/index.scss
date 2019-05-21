@@ -80,9 +80,77 @@
   }
 
   .article-info {
+    display: flex;
     font-size: 12px;
     line-height: 20px;
-
+    .article_sym_block{
+      width: 220px;
+      min-height: 320px;
+      background: #f6f8fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 24px;
+      box-sizing: border-box;
+      .avatar-sym{
+        width: 120px;
+        height: 120px;
+        margin-top: 20px;
+      }
+      .tag{
+        font-size: 16px;
+        color: #4399ff;
+        padding: 10px 0;
+      }
+      .article_infos_sym{
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        .article_info{
+          color: #666666;
+          font-size: 14px;
+          flex: 1;
+          text-align: center;
+          display: flex;
+          .article_info_count{
+            margin-bottom: 8px;
+          }
+        }
+      }
+      .follows{
+        display: flex;
+        margin-top: 20px;
+        .follow{
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+          background-position: 0 0;
+          background-size: contain;
+        }
+        .dot{
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+      .follow_btn{
+        width: 84px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        color: #fff;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+        background: #4399ff;
+        margin-top: 20px;
+      }
+    }
+    .article_content_sym{
+      margin-left: 24px;
+    }
     .article-actions {
       line-height: 60px;
       font-size: 13px;
@@ -127,7 +195,30 @@
       cursor: pointer;
     }
   }
-
+  .comment__reply{
+    padding: 15px;
+    .avatar{
+      height: 38px;
+      width: 38px;
+      margin-right: 10px;
+      border-radius: 3px 3px 3px 3px;
+      vertical-align: middle;
+      background-color: rgba(0,0,0,.02);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+    .reply__text{
+      flex: 1;
+      min-width: 1px;
+      color: #4285f4;
+      cursor: pointer;
+      border: 1px solid #eee;
+      line-height: 37px;
+      border-radius: 3px;
+      padding: 0 10px;
+    }
+  }
   .share {
     position: fixed;
     top: 50%;
@@ -472,6 +563,32 @@ label.cmt-anonymous {
   .list > ul > li:last-child {
     border-bottom-width: 0;
   }
+  .list{
+    background: #fff;
+    .comment_li_sys{
+      background: #fff;
+      padding: 24px 0;
+      .comment_li_sys_left{
+        width: 220px;
+        min-height: 192px;
+        background: #f6f8fa;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .avatar_link{
+          width: 120px;
+          height: 120px;
+          border-radius: 2px;
+          margin-top: 20px;
+        }
+        .comment_author_name{
+          font-size: 16px;
+          color: #4399ff;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
 
   .comment {
     margin: 5px 0;
@@ -570,7 +687,6 @@ label.cmt-anonymous {
 
 /* start article list */
 .article-list {
-
   ul > li {
     padding: 15px;
   }
@@ -620,6 +736,55 @@ label.cmt-anonymous {
 
   .list-info {
     line-height: 18px;
+  }
+  .article_sys_item{
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    .contents{
+      display: flex;
+      flex: 1;
+      position: relative;
+      align-items: center;
+      .tooltipped-e{
+        margin-right: 4px;
+        margin-top: 3px;
+      }
+      .post_info{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex: 1;
+        .abstract{
+          margin: 0;
+          text-overflow: -o-ellipsis-lastline;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          padding-right: 10px;
+        }
+        .reply_info{
+          display: flex;
+          justify-content: space-around;
+          .reply_info_count{
+            a{
+              display: block;
+            }
+            .ft-fade{
+              line-height: 20px;
+            }
+          }
+          .fn-ellipsis{
+            line-height: 20px;
+            margin-left: 4px;
+          }
+        }
+      }
+
+    }
   }
 }
 
