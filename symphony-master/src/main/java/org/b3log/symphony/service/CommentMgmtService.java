@@ -149,6 +149,9 @@ public class CommentMgmtService {
     @Inject
     private LivenessMgmtService livenessMgmtService;
 
+    @Inject
+    private ArticleCommentService articleCommentService;
+
     /**
      * Accepts a comment specified with the given comment id.
      *

@@ -51,7 +51,7 @@ public class SmsService {
         }
     }
 
-    private static final Logger LOGGER = Logger.getLogger(Geos.class);
+    private static final Logger LOGGER = Logger.getLogger(SmsService.class);
 
     private static final String REG_VERIFY_SMS_CODE = "SMS_165108475";
 

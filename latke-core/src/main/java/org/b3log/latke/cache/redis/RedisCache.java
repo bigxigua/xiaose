@@ -15,16 +15,14 @@
  */
 package org.b3log.latke.cache.redis;
 
+import javafx.collections.transformation.SortedList;
 import org.b3log.latke.cache.AbstractCache;
 import org.b3log.latke.logging.Level;
 import org.b3log.latke.logging.Logger;
 import org.json.JSONObject;
 import redis.clients.jedis.Jedis;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Redis cache.
@@ -181,5 +179,72 @@ public final class RedisCache extends AbstractCache {
         } catch (final Exception e) {
             LOGGER.log(Level.ERROR, "Shutdown redis connection pool failed", e);
         }
+    }
+
+    //extension cache
+    public void zAdd(final String key, final double score, final JSONObject value) {
+        Jedis jedis = null;
+        try {
+            jedis = Connections.getJedis();
+
+            jedis.zadd(key, score, value.toString());
+        } catch (final Exception e) {
+            LOGGER.log(Level.ERROR, "Zadd data to cache with key [" + key + "] failed", e);
+        } finally {
+            if (null != jedis) {
+                jedis.close();
+            }
+        }
+    }
+
+    public void zAdd(final String key, final Map<String, Double> values) {
+        Jedis jedis = null;
+        try {
+            jedis = Connections.getJedis();
+
+            jedis.zadd(key, values);
+        } catch (final Exception e) {
+            LOGGER.log(Level.ERROR, "Zadd data to cache with key [" + key + "] failed", e);
+        } finally {
+            if (null != jedis) {
+                jedis.close();
+            }
+        }
+    }
+
+    public List<JSONObject> zGet(final String key, final int limit) {
+        Jedis jedis = null;
+        try {
+            jedis = Connections.getJedis();
+
+            Set<String> rlt = jedis.zrangeByScore(key, "-inf", "+inf", 0, limit);
+            List<JSONObject> objs = new ArrayList<>();
+            for (String s : rlt) {
+                objs.add(new JSONObject(s));
+            }
+            return objs;
+        } catch (final Exception e) {
+            LOGGER.log(Level.ERROR, "Zget data to cache with key [" + key + "] failed", e);
+        } finally {
+            if (null != jedis) {
+                jedis.close();
+            }
+        }
+        return Collections.emptyList();
+    }
+
+    public boolean existKey(final String key) {
+        Jedis jedis = null;
+        try {
+            jedis = Connections.getJedis();
+            return jedis.exists(key);
+        } catch (final Exception e) {
+            LOGGER.log(Level.ERROR, "exist data to cache with key [" + key + "] failed", e);
+        } finally {
+            if (null != jedis) {
+                jedis.close();
+            }
+        }
+        return false;
     }
 }

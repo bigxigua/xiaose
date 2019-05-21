@@ -71,6 +71,7 @@ public interface Cache {
      */
     void put(final String key,final JSONObject value,long expireTime);
 
+
     /**
      * Puts the specified object into this cache asynchronously.
      * <p>
