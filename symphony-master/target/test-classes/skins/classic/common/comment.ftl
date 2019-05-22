@@ -18,20 +18,14 @@
 
 -->
 <li id="${comment.oId}"
-    class="${(isSys == 'true')?string('comment_li_sys','7')} <#if comment.commentStatus == 1>cmt-shield</#if><#if comment.commentNice || comment.commentQnAOffered == 1> cmt-perfect</#if><#if comment.commentReplyCnt != 0> cmt-selected</#if>">
+    class="<#if comment.commentStatus == 1>cmt-shield</#if><#if comment.commentNice || comment.commentQnAOffered == 1> cmt-perfect</#if><#if comment.commentReplyCnt != 0> cmt-selected</#if>">
     <div class="fn-flex">
-        <div class="comment_li_sys_left">
+        <div>
             <#if comment.commentAnonymous == 0>
-                <a rel="nofollow" style="background-image:url('${comment.commentAuthorThumbnailURL}')" class="avatar avatar_link" href="${servePath}/member/${comment.commentAuthorName}"></a>
-                <a rel="author"
-                   href="${servePath}/member/${comment.commentAuthorName}"
-                   class="comment_author_name">${comment.commentAuthorName}</a>
-            </#if>
-            <#if comment.commentAnonymous != 0>
-                <div class="avatar tooltipped tooltipped-se avatar_link"
+            <a rel="nofollow" href="${servePath}/member/${comment.commentAuthorName}"></#if>
+                <div class="avatar tooltipped tooltipped-se"
                      aria-label="${comment.commentAuthorName}" style="background-image:url('${comment.commentAuthorThumbnailURL}')"></div>
-                <div class="comment_author_name">${comment.commentAuthorName}</div>
-            </#if>
+                <#if comment.commentAnonymous == 0></a></#if>
         </div>
         <div class="fn-flex-1">
             <div class="comment-get-comment list"></div>
@@ -55,11 +49,11 @@
                     </#if>
                     <#if isLoggedIn && comment.commentAuthorName == currentUser.userName && permissions["commonUpdateComment"].permissionGrant>
                         <span class="tooltipped tooltipped-n ft-a-title hover-show fn-hidden" onclick="Comment.edit('${comment.oId}')"
-                           aria-label="${editLabel}"><svg><use xlink:href="#edit"></use></svg></span> &nbsp;
+                              aria-label="${editLabel}"><svg><use xlink:href="#edit"></use></svg></span> &nbsp;
                     </#if>
                     <#if permissions["commentUpdateCommentBasic"].permissionGrant>
-                    <a class="tooltipped tooltipped-n ft-a-title hover-show fn-hidden" href="${servePath}/admin/comment/${comment.oId}"
-                       aria-label="${adminLabel}"><svg class="icon-setting"><use xlink:href="#setting"></use></svg></a> &nbsp;
+                        <a class="tooltipped tooltipped-n ft-a-title hover-show fn-hidden" href="${servePath}/admin/comment/${comment.oId}"
+                           aria-label="${adminLabel}"><svg class="icon-setting"><use xlink:href="#setting"></use></svg></a> &nbsp;
                     </#if>
                     <#if comment.commentOriginalCommentId != ''>
                         <span class="fn-pointer ft-a-title tooltipped tooltipped-nw" aria-label="${goCommentLabel}"
@@ -85,27 +79,27 @@
                         <#if !hasRewarded && permissions["commonThankComment"].permissionGrant>
                             onclick="Comment.thank('${comment.oId}', '${csrfToken}', '${comment.commentThankLabel}', ${comment.commentAnonymous}, this)"
                         <#elseif !hasRewarded>
-                              onclick="Article.permissionTip(Label.noPermissionLabel)"
-                        </#if>><svg class="fn-text-top icon-heart"><use xlink:href="#heart"></use></svg> ${comment.rewardedCnt}</span> &nbsp;
+                            onclick="Article.permissionTip(Label.noPermissionLabel)"
+                                </#if>><svg class="fn-text-top icon-heart"><use xlink:href="#heart"></use></svg> ${comment.rewardedCnt}</span> &nbsp;
                     <span class="tooltipped tooltipped-n<#if isLoggedIn && 0 == comment.commentVote> ft-red</#if>"
                           aria-label="${upLabel}"
                     <#if permissions["commonGoodComment"].permissionGrant>
                           onclick="Article.voteUp('${comment.oId}', 'comment', this)"
                         <#else>
                             onclick="Article.permissionTip(Label.noPermissionLabel)"
-                    </#if>><svg class="icon-thumbs-up"><use xlink:href="#thumbs-up"></use></svg> ${comment.commentGoodCnt}</span> &nbsp;
+                            </#if>><svg class="icon-thumbs-up"><use xlink:href="#thumbs-up"></use></svg> ${comment.commentGoodCnt}</span> &nbsp;
                     <span class="tooltipped tooltipped-n<#if isLoggedIn && 1 == comment.commentVote> ft-red</#if>"
                           aria-label="${downLabel}"
                     <#if permissions["commonBadComment"].permissionGrant>
                           onclick="Article.voteDown('${comment.oId}', 'comment', this)"
                         <#else>
                             onclick="Article.permissionTip(Label.noPermissionLabel)"
-                    </#if>><svg class="icon-thumbs-down"><use xlink:href="#thumbs-down"></use></svg> ${comment.commentBadCnt}</span> &nbsp;
+                            </#if>><svg class="icon-thumbs-down"><use xlink:href="#thumbs-down"></use></svg> ${comment.commentBadCnt}</span> &nbsp;
 
                    <#if isLoggedIn && !article.offered && article.articleAuthorId == currentUser.oId && comment.commentAuthorName != currentUser.userName && article.articleQnAOfferPoint != 0>
-                    <span aria-label="${adoptLabel}" class="icon-reply-btn tooltipped tooltipped-n"
-                          onclick="Comment.accept('${adoptTipLabel?replace('{point}', article.articleQnAOfferPoint)}', '${comment.oId}', this)"
-                    ><svg><use xlink:href="#icon-accept"></use></svg></span> &nbsp;
+                       <span aria-label="${adoptLabel}" class="icon-reply-btn tooltipped tooltipped-n"
+                             onclick="Comment.accept('${adoptTipLabel?replace('{point}', article.articleQnAOfferPoint)}', '${comment.oId}', this)"
+                       ><svg><use xlink:href="#icon-accept"></use></svg></span> &nbsp;
                    </#if>
                     <span aria-label="${reportLabel}" class="tooltipped tooltipped-n"
                           onclick="$('#reportDialog').data('type', 1).data('id', '${comment.oId}').dialog('open')"

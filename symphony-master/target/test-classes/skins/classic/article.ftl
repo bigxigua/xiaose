@@ -73,15 +73,15 @@
                         </#list>
                         <div class="article_infos_sym">
                             <div class="article_info">
-                                <div class="article_info_count">1111</div>
-                                <div class="article_info_title">关注</div>
+                                <div class="article_info_count">${article.articleAuthor.userTagCount}</div>
+                                <div class="article_info_title">标签</div>
                             </div>
                             <div class="article_info">
-                                <div class="article_info_count">1111</div>
-                                <div class="article_info_title">赞同</div>
+                                <div class="article_info_count">${article.articleAuthor.userArticleCount}</div>
+                                <div class="article_info_title">发帖</div>
                             </div>
                             <div class="article_info">
-                                <div class="article_info_count">1111</div>
+                                <div class="article_info_count">${article.articleAuthor.userCommentCount}</div>
                                 <div class="article_info_title">回贴</div>
                             </div>
                         </div>
@@ -92,14 +92,16 @@
                             </#list>
                             <div class="dot">...</div>
                         </div>
-                        <#if isLoggedIn && !isFollowing>
-                            <div class="follow_btn"
-                            <#if permissions["commonWatchArticle"].permissionGrant>
-                                onclick="Util.follow(this, '${article.oId}', 'article-watch', ${article.articleWatchCnt})"
+                        <#if isLoggedIn && (currentUser.userName != article.articleAuthorName)>
+                            <#if isFollowing>
+                                <div class="follow_btn" onclick="Util.unfollow(this, '${article.articleAuthorId}', 'user')">
+                                    关注
+                                </div>
                             <#else>
-                                onclick="Article.permissionTip(Label.noPermissionLabel)"
+                                <div class="follow_btn follow_btn_unfollow" onclick="Util.follow(this, '${article.articleAuthorId}', 'user')">
+                                    取消关注
+                                </div>
                             </#if>
-                            >关注</div>
                         </#if>
                     </div>
                     <div class="fn-flex-1 fn-ellipsis article_content_sym">

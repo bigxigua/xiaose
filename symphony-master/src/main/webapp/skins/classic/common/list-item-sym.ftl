@@ -31,11 +31,6 @@
             <div class="post_info">
                 <a class="abstract" href="${servePath}${article.articlePermalink}">
                     ${article.articlePreviewContent}
-                    ${article.articlePreviewContent}
-                    ${article.articlePreviewContent}
-                    ${article.articlePreviewContent}
-                    ${article.articlePreviewContent} ${article.articlePreviewContent}
-                    ${article.articlePreviewContent}
 
                 </a>
                 <div class="reply_info">
