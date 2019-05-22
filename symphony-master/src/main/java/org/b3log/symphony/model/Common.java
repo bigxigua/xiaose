@@ -831,6 +831,8 @@ public final class Common {
      */
     public static final String TOP = "top";
 
+    public static final String MOBILE_VERIFY_CODE = "mobileVerifyCode";
+
     /**
      * Private constructor.
      */

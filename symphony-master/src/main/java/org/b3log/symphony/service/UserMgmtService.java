@@ -371,7 +371,8 @@ public class UserMgmtService {
             boolean toUpdate = false;
             String ret = null;
             String avatarURL = null;
-            user = userRepository.getByEmail(userEmail);
+            //user = userRepository.getByEmail(userEmail);
+            user = null;
             int userNo = 0;
             if (null != user) {
                 if (UserExt.USER_STATUS_C_VALID == user.optInt(UserExt.USER_STATUS)
@@ -470,9 +471,9 @@ public class UserMgmtService {
                 if (!AvatarQueryService.DEFAULT_AVATAR_URL.equals(avatarURL)) { // generate/upload avatar succ
                     if (Symphonys.QN_ENABLED) {
                         user.put(UserExt.USER_AVATAR_URL, Symphonys.UPLOAD_QINIU_DOMAIN + "/avatar/" + ret + "?"
-                                + new Date().getTime());
+                                + System.currentTimeMillis());
                     } else {
-                        user.put(UserExt.USER_AVATAR_URL, avatarURL + "?" + new Date().getTime());
+                        user.put(UserExt.USER_AVATAR_URL, avatarURL + "?" + System.currentTimeMillis());
                     }
 
                     avatarURL = user.optString(UserExt.USER_AVATAR_URL);

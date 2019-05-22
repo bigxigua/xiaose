@@ -35,6 +35,7 @@ import org.b3log.symphony.service.InvitecodeQueryService;
 import org.b3log.symphony.service.OptionQueryService;
 import org.b3log.symphony.service.RoleQueryService;
 import org.b3log.symphony.service.UserQueryService;
+import org.b3log.symphony.util.Validators;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
@@ -130,18 +131,22 @@ public class UserRegisterValidation extends ProcessAdvice {
             return true;
         }
 
-        final int length = name.length();
-        if (length < MIN_USER_NAME_LENGTH || length > MAX_USER_NAME_LENGTH) {
-            return true;
-        }
+//        final int length = name.length();
+//        if (length < MIN_USER_NAME_LENGTH || length > MAX_USER_NAME_LENGTH) {
+//            return true;
+//        }
 
-        char c;
-        for (int i = 0; i < length; i++) {
-            c = name.charAt(i);
-            if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || ('0' <= c && c <= '9') || '-' == c) {
-                continue;
-            }
+//        char c;
+//        for (int i = 0; i < length; i++) {
+//            c = name.charAt(i);
+//            if (('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || ('0' <= c && c <= '9') || '-' == c) {
+//                continue;
+//            }
+//
+//            return true;
+//        }
 
+        if(!Validators.isMobile(name)) {
             return true;
         }
 
@@ -221,9 +226,9 @@ public class UserRegisterValidation extends ProcessAdvice {
         }
 
         final String name = requestJSONObject.optString(User.USER_NAME);
-        final String email = requestJSONObject.optString(User.USER_EMAIL);
+        //final String email = requestJSONObject.optString(User.USER_EMAIL);
         final int appRole = requestJSONObject.optInt(UserExt.USER_APP_ROLE);
-        //final String password = requestJSONObject.optString(User.USER_PASSWORD);
+        final String password = requestJSONObject.optString(User.USER_PASSWORD);
 
         if (UserExt.isReservedUserName(name)) {
             throw new RequestProcessAdviceException(new JSONObject().put(Keys.MSG, langPropsService.get("registerFailLabel")
@@ -231,11 +236,11 @@ public class UserRegisterValidation extends ProcessAdvice {
         }
 
         checkField(invalidUserName(name), "registerFailLabel", "invalidUserNameLabel");
-        checkField(!Strings.isEmail(email), "registerFailLabel", "invalidEmailLabel");
-        checkField(!UserExt.isValidMailDomain(email), "registerFailLabel", "invalidEmail1Label");
+        //checkField(!Strings.isEmail(email), "registerFailLabel", "invalidEmailLabel");
+        //checkField(!UserExt.isValidMailDomain(email), "registerFailLabel", "invalidEmail1Label");
         checkField(UserExt.USER_APP_ROLE_C_HACKER != appRole
                 && UserExt.USER_APP_ROLE_C_PAINTER != appRole, "registerFailLabel", "invalidAppRoleLabel");
-        //checkField(invalidUserPassword(password), "registerFailLabel", "invalidPasswordLabel");
+        checkField(invalidUserPassword(password), "registerFailLabel", "invalidPasswordLabel");
     }
 
     /**

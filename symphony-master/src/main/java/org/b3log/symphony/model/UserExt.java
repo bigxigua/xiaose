@@ -34,6 +34,10 @@ import org.json.JSONObject;
  */
 public final class UserExt {
 
+    public static final String USER_FOLLOWER_COUNT = "userFollowersCnt";
+
+    public static final String USER_FOLLOWER_LIST = "userFollowersList";
+
     /**
      * Key of index redirect URL.
      */

@@ -55,6 +55,7 @@ import org.json.JSONObject;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -631,6 +632,10 @@ public class ArticleProcessor {
 
         articleQueryService.processArticleContent(article);
 
+        //添加用户followers
+        fillUserFollowers(article);
+
+
         String cmtViewModeStr = context.param("m");
         JSONObject currentUser;
         String currentUserId = null;
@@ -866,6 +871,22 @@ public class ArticleProcessor {
         if (StringUtils.isBlank(article.optString(Article.ARTICLE_AUDIO_URL))) {
             articleMgmtService.genArticleAudio(article);
         }
+    }
+
+    private void fillUserFollowers(JSONObject article) {
+        final JSONObject author = article.getJSONObject(Article.ARTICLE_T_AUTHOR);
+        final String followingId = author.optString(Keys.OBJECT_ID);
+        final JSONObject currentUser = Sessions.getUser();
+        if(currentUser != null) {
+            final String followerId = currentUser.optString(Keys.OBJECT_ID);
+            final boolean isFollowing = followQueryService.isFollowing(followerId, followingId, Follow.FOLLOWING_TYPE_C_USER);
+            author.put(Common.IS_FOLLOWING, isFollowing);
+        }
+        final JSONObject followerUsersResult = followQueryService.getFollowerUsers(followingId, 1, 10);
+        final List<JSONObject> followerUsers = (List) followerUsersResult.opt(Keys.RESULTS);
+        final int followerUserCnt = followerUsersResult.optInt(Pagination.PAGINATION_RECORD_COUNT);
+        author.put(UserExt.USER_FOLLOWER_COUNT,followerUserCnt);
+        author.put(UserExt.USER_FOLLOWER_LIST,followerUsers);
     }
 
     /**

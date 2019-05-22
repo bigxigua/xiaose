@@ -164,6 +164,9 @@ public class LoginProcessor {
     @Inject
     private TagQueryService tagQueryService;
 
+    @Inject
+    private SmsService smsService;
+
     /**
      * Next guide step.
      *
@@ -488,6 +491,52 @@ public class LoginProcessor {
         }
 
         dataModelService.fillHeaderAndFooter(context, dataModel);
+    }
+
+    @RequestProcessing(value = "/registerMobile", method = HttpMethod.POST)
+    @Before(UserRegisterValidation.class)
+    public void registerMobile(final RequestContext context) {
+        context.renderJSON();
+        final HttpServletRequest request = context.getRequest();
+        final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
+        final String name = requestJSONObject.optString(User.USER_NAME);
+        final String invitecode = requestJSONObject.optString(Invitecode.INVITECODE);
+        final String referral = requestJSONObject.optString(Common.REFERRAL);
+        final String mobileVerifyCode = requestJSONObject.optString(Common.MOBILE_VERIFY_CODE);
+
+        final JSONObject user = new JSONObject();
+        user.put(User.USER_NAME, name);
+        user.put(User.USER_EMAIL, "");
+        user.put(User.USER_PASSWORD, "");
+        final Locale locale = Locales.getLocale();
+        user.put(UserExt.USER_LANGUAGE, locale.getLanguage() + "_" + locale.getCountry());
+
+        if(!smsService.getPrevCode(name).equals(mobileVerifyCode)) {
+            context.renderTrueResult().renderMsg(langPropsService.get("mobileVerifycodeSentLabel"));
+            return;
+        }
+
+        try {
+            final String newUserId = userMgmtService.addUser(user);
+
+            final String allowRegister = optionQueryService.getAllowRegister();
+            if ("2".equals(allowRegister) && StringUtils.isNotBlank(invitecode)) {
+                final JSONObject ic = invitecodeQueryService.getInvitecode(invitecode);
+                ic.put(Invitecode.USER_ID, newUserId);
+                ic.put(Invitecode.USE_TIME, System.currentTimeMillis());
+                final String icId = ic.optString(Keys.OBJECT_ID);
+
+                invitecodeMgmtService.updateInvitecode(icId, ic);
+            }
+
+            context.renderTrueResult().renderMsg(langPropsService.get("verifycodeSentLabel"));
+
+        } catch (final ServiceException e) {
+            final String msg = langPropsService.get("registerFailLabel") + " - " + e.getMessage();
+            LOGGER.log(Level.ERROR, msg + "[name={0}]", name);
+
+            context.renderMsg(msg);
+        }
     }
 
     /**
