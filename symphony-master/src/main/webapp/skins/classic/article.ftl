@@ -142,7 +142,7 @@
                     <#list article.articleAuthor.userFollowersList as follow>
                         <a rel="tag" class="follow" href="${servePath}/member/${follow.userName}" style="background-image:url('${follow.userAvatarURL}')"></a>
                     </#list>
-                    <div class="dot">...</div>
+<#--                    <div class="dot">...</div>-->
                 </div>
             </div>
 

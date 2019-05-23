@@ -886,7 +886,8 @@ public class ArticleProcessor {
         final List<JSONObject> followerUsers = (List) followerUsersResult.opt(Keys.RESULTS);
         final int followerUserCnt = followerUsersResult.optInt(Pagination.PAGINATION_RECORD_COUNT);
         author.put(UserExt.USER_FOLLOWER_COUNT,followerUserCnt);
-        author.put(UserExt.USER_FOLLOWER_LIST,followerUsers);
+        followerUsers.add(author);
+        author.put(UserExt.USER_FOLLOWER_LIST,followerUsers.toArray());
     }
 
     /**

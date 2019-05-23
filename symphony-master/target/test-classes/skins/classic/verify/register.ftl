@@ -26,6 +26,7 @@
         </@head>
         <link rel="stylesheet" href="${staticServePath}/css/index.css?${staticResourceVersion}" />
         <link rel="canonical" href="${servePath}/register">
+        <script src="//captcha.luosimao.com/static/dist/api.js"></script>
     </head>
     <body>
         <#include "../header.ftl">
@@ -43,10 +44,11 @@
                             <svg><use xlink:href="#email"></use></svg>
                             <input id="registerUserEmail" type="text" placeholder="${mobilePlaceholderLabel}" autocomplete="off" />
                         </div>
-                        <div class="input-wrap<#if "2" == miscAllowRegister> fn-none</#if>">
-                            <img id="registerCaptchaImg" class="fn-pointer captcha-img " src="${servePath}/captcha" onclick="this.src = '${servePath}/captcha?' + (new Date()).getTime()" />
-                            <input type="text" id="registerCaptcha" class="captcha-input" placeholder="${captchaLabel}" />
-                        </div>
+<#--                        <div class="input-wrap<#if "2" == miscAllowRegister> fn-none</#if>">-->
+<#--                            <img id="registerCaptchaImg" class="fn-pointer captcha-img " src="${servePath}/captcha" onclick="this.src = '${servePath}/captcha?' + (new Date()).getTime()" />-->
+<#--                            <input type="text" id="registerCaptcha" class="captcha-input" placeholder="${captchaLabel}" />-->
+<#--                        </div>-->
+                        <div class="l-captcha" data-site-key="0e72251b23e593f6d364edd438cc2880"></div>
                         <div class="input-wrap<#if "2" != miscAllowRegister> fn-none</#if>">
                             <svg><use xlink:href="#heart"></use></svg>
                             <input id="registerInviteCode" type="text" placeholder="${invitecodePlaceholderLabel}" autocomplete="off" />
