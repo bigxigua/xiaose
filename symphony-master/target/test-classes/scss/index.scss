@@ -113,7 +113,6 @@
           flex: 1;
           text-align: center;
           display: flex;
-          flex-direction: column;
           .article_info_count{
             margin-bottom: 8px;
           }
@@ -588,9 +587,6 @@ label.cmt-anonymous {
           margin-top: 10px;
         }
       }
-      .comment_li_sys_right{
-        padding-left: 20px;
-      }
     }
   }
 
@@ -755,16 +751,12 @@ label.cmt-anonymous {
         margin-top: 3px;
       }
       .post_info{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         flex: 1;
-        position: relative;
-        height: 45px;
         .abstract{
           margin: 0;
-          position: absolute;
-          line-height: 45px;
-          left: 0;
-          top: 0;
-          width: 80%;
           text-overflow: -o-ellipsis-lastline;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -777,11 +769,6 @@ label.cmt-anonymous {
         .reply_info{
           display: flex;
           justify-content: space-around;
-          position: absolute;
-          right: 0;
-          top: 0;
-          line-height: 45px;
-          width: 19%;
           .reply_info_count{
             a{
               display: block;
