@@ -41,20 +41,24 @@
                         </div>
                         <div class="input-wrap">
                             <svg><use xlink:href="#email"></use></svg>
-                            <input id="registerUserEmail" type="text" placeholder="${emailPlaceholderLabel}" autocomplete="off" />
+                            <input id="registerUserEmail" type="text" placeholder="${mobilePlaceholderLabel}" autocomplete="off" />
                         </div>
-                        
-                        <div class="input-wrap<#if "2" != miscAllowRegister> fn-none</#if>">
-                            <svg><use xlink:href="#heart"></use></svg>
-                            <input id="registerInviteCode" type="text" placeholder="${invitecodePlaceholderLabel}" autocomplete="off" />
-                        </div>
-                        
-                        
                         <div class="input-wrap<#if "2" == miscAllowRegister> fn-none</#if>">
                             <img id="registerCaptchaImg" class="fn-pointer captcha-img " src="${servePath}/captcha" onclick="this.src = '${servePath}/captcha?' + (new Date()).getTime()" />
                             <input type="text" id="registerCaptcha" class="captcha-input" placeholder="${captchaLabel}" />
                         </div>
-                       
+                        <div class="input-wrap<#if "2" != miscAllowRegister> fn-none</#if>">
+                            <svg><use xlink:href="#heart"></use></svg>
+                            <input id="registerInviteCode" type="text" placeholder="${invitecodePlaceholderLabel}" autocomplete="off" />
+                        </div>
+                        <div class="input-wrap">
+                            <svg><use xlink:href="#locked"></use></svg>
+                            <input type="password" autofocus="autofocus" id="registerUserPassword2" placeholder="${passwordLabel}" />
+                        </div>
+                        <div class="input-wrap">
+                            <svg><use xlink:href="#locked"></use></svg>
+                            <input type="password" id="registerConfirmPassword2" placeholder="${userPasswordLabel2}" />
+                        </div>
                         <div id="registerTip" class="tip"></div>
                         <input id="referral" type="hidden" value="${referral}">
                         <button class="green" id="registerBtn" onclick="Verify.register()">${registerLabel}</button>

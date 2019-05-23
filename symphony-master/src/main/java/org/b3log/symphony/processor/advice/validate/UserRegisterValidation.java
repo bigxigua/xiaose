@@ -55,11 +55,11 @@ public class UserRegisterValidation extends ProcessAdvice {
     /**
      * Max user name length.
      */
-    public static final int MAX_USER_NAME_LENGTH = 64;
+    public static final int MAX_USER_NAME_LENGTH = 16;
     /**
      * Min user name length.
      */
-    public static final int MIN_USER_NAME_LENGTH = 1;
+    public static final int MIN_USER_NAME_LENGTH = 3;
     /**
      * Logger.
      */
@@ -131,10 +131,12 @@ public class UserRegisterValidation extends ProcessAdvice {
             return true;
         }
 
-//        final int length = name.length();
-//        if (length < MIN_USER_NAME_LENGTH || length > MAX_USER_NAME_LENGTH) {
-//            return true;
-//        }
+        final int length = name.length();
+        if (length < MIN_USER_NAME_LENGTH || length > MAX_USER_NAME_LENGTH) {
+            return true;
+        }
+
+
 
 //        char c;
 //        for (int i = 0; i < length; i++) {
@@ -146,7 +148,10 @@ public class UserRegisterValidation extends ProcessAdvice {
 //            return true;
 //        }
 
-        if(!Validators.isMobile(name)) {
+//        if(!Validators.isMobile(name)) {
+//            return true;
+//        }
+        if(!Validators.verifyUserName(name)) {
             return true;
         }
 

@@ -831,7 +831,11 @@ public final class Common {
      */
     public static final String TOP = "top";
 
-    public static final String MOBILE_VERIFY_CODE = "mobileVerifyCode";
+    public static final String PHONE_VERIFY_CODE = "phoneVerifyCode";
+
+    public static final String PHONE_NO = "phoneNo";
+
+    public static final String LUOSIMAO_RESP_CODE = "luosimaoRespCode";
 
     /**
      * Private constructor.

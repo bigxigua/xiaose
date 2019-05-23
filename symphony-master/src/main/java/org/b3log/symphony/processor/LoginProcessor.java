@@ -20,6 +20,7 @@ package org.b3log.symphony.processor;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.http.client.HttpClient;
 import org.b3log.latke.Keys;
 import org.b3log.latke.Latkes;
 import org.b3log.latke.ioc.Inject;
@@ -47,8 +48,7 @@ import org.b3log.symphony.processor.advice.validate.UserForgetPwdValidation;
 import org.b3log.symphony.processor.advice.validate.UserRegister2Validation;
 import org.b3log.symphony.processor.advice.validate.UserRegisterValidation;
 import org.b3log.symphony.service.*;
-import org.b3log.symphony.util.Sessions;
-import org.b3log.symphony.util.Symphonys;
+import org.b3log.symphony.util.*;
 import org.json.JSONObject;
 
 import javax.servlet.http.HttpServletRequest;
@@ -493,16 +493,16 @@ public class LoginProcessor {
         dataModelService.fillHeaderAndFooter(context, dataModel);
     }
 
-    @RequestProcessing(value = "/registerMobile", method = HttpMethod.POST)
+    @RequestProcessing(value = "/registerPhone", method = HttpMethod.POST)
     @Before(UserRegisterValidation.class)
-    public void registerMobile(final RequestContext context) {
+    public void registerPhone(final RequestContext context) {
         context.renderJSON();
         final HttpServletRequest request = context.getRequest();
         final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
         final String name = requestJSONObject.optString(User.USER_NAME);
         final String invitecode = requestJSONObject.optString(Invitecode.INVITECODE);
         final String referral = requestJSONObject.optString(Common.REFERRAL);
-        final String mobileVerifyCode = requestJSONObject.optString(Common.MOBILE_VERIFY_CODE);
+        final String mobileVerifyCode = requestJSONObject.optString(Common.PHONE_VERIFY_CODE);
 
         final JSONObject user = new JSONObject();
         user.put(User.USER_NAME, name);
@@ -511,7 +511,7 @@ public class LoginProcessor {
         final Locale locale = Locales.getLocale();
         user.put(UserExt.USER_LANGUAGE, locale.getLanguage() + "_" + locale.getCountry());
 
-        if(!smsService.getPrevCode(name).equals(mobileVerifyCode)) {
+        if (!smsService.getPrevCode(name).equals(mobileVerifyCode)) {
             context.renderTrueResult().renderMsg(langPropsService.get("mobileVerifycodeSentLabel"));
             return;
         }
@@ -537,6 +537,36 @@ public class LoginProcessor {
 
             context.renderMsg(msg);
         }
+    }
+
+    @RequestProcessing(value = "/sendPhoneCode", method = HttpMethod.POST)
+    @Before(UserRegisterValidation.class)
+    public void sendPhoneCode(final RequestContext context) {
+        context.renderJSON();
+        final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
+        final String phone = requestJSONObject.optString(Common.PHONE_NO);
+        final String lsmResponse = requestJSONObject.optString(Common.LUOSIMAO_RESP_CODE);
+        if(!Validators.isMobile(phone)) {
+            context.renderFalseResult().renderMsg("手机号码格式错误");
+            return;
+        }
+
+        Map<String, String> params = new HashMap<>();
+        params.put("api_key", Symphonys.get("luosimao.sitekey"));
+        params.put("response", lsmResponse);
+        String resp = HttpUtils.post("https://captcha.luosimao.com/api/site_verify",params);
+        JSONObject jObj = new JSONObject(resp);
+        if(jObj.getInt("error") != 0) {
+            LOGGER.log(Level.WARN, "send phone code fail:{0}", jObj.toString());
+            context.renderFalseResult().renderMsg(jObj.getString("res"));
+            return;
+        }
+        SmsService.Result r = smsService.sendRegisterCodeSms(phone);
+        if(r.isOk()) {
+            context.renderTrueResult().renderMsg("短信已发送");
+            return;
+        }
+        context.renderFalseResult().renderMsg("短信发送失败，请稍后再试");
     }
 
     /**
