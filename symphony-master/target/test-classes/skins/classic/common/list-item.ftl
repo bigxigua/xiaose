@@ -29,7 +29,7 @@
             <#--最多2行显示，置顶图标+内容-->
             <@icon article.articlePerfect article.articleType></@icon>
             <div class="post_info">
-                <a class="abstract" target="_blank" href="${servePath}${article.articlePermalink}">
+                <a class="abstract" href="${servePath}${article.articlePermalink}">
                     <span> ${article.articlePreviewContent}</span>
                 </a>
                 <div class="reply_info">

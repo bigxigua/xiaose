@@ -2,54 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e3aaba06-f07b-4680-9043-5a946ccf5182" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/symphony_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/symphony_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_3_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__redis_clients_jedis_3_0_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/latke-core/latke-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/latke-core/latke-core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/redis/RedisCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/redis/RedisCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/latke-repository-mysql/latke-repository-mysql.iml" beforeDir="false" afterPath="$PROJECT_DIR$/latke-repository-mysql/latke-repository-mysql.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/cache/CommunalCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/cache/CommunalCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/model/Common.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/model/Common.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/ArticleProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/ArticleProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/IndexProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/IndexProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/LoginProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/LoginProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/advice/validate/UserRegisterValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/advice/validate/UserRegisterValidation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/SmsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/SmsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/util/Validators.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/util/Validators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/repository/jdbc/util/Connections.java" beforeDir="false" afterPath="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/repository/jdbc/util/Connections.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/FileUploadProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/FileUploadProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/SeaweedFSUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/SeaweedFSUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symphony-master/src/main/resources/lang_zh_CN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/resources/lang_zh_CN.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/resources/latke.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/resources/latke.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/resources/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/resources/local.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symphony-master/src/main/resources/symphony.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/resources/symphony.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/webapp/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/webapp/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/webapp/js/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/webapp/js/verify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/header.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/verify/register.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/verify/register.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/mobile/verify/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/mobile/verify/login.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/mobile/verify/register.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/mobile/verify/register.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/symphony.iml" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/symphony.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/footer.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/footer.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/skin.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/skin.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/lang_zh_CN.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/lang_zh_CN.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/latke.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/latke.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/cache/CommunalCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/cache/CommunalCache.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/model/Common.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/model/Common.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/ArticleProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/ArticleProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/IndexProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/IndexProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/FileUploadProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/FileUploadProcessor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/LoginProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/LoginProcessor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/advice/validate/UserRegisterValidation.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/processor/advice/validate/UserRegisterValidation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/service/SmsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/service/SmsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/util/Validators.class" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/org/b3log/symphony/util/Validators.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symphony-master/target/classes/symphony.properties" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/classes/symphony.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/js/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/js/verify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/article.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/article.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/common/list-item.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/common/list-item.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/header.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/header.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/verify/register.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/verify/register.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/mobile/verify/login.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/mobile/verify/login.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/mobile/verify/register.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/mobile/verify/register.ftl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/footer.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/symphony-master/target/test-classes/skins/classic/footer.ftl" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/latke-core/target/" />
@@ -67,29 +33,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/LoginProcessor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="550" lean-forward="true" selection-start-line="550" selection-end-line="550" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/list-item.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="48" column="80" lean-forward="true" selection-start-line="48" selection-start-column="80" selection-end-line="48" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/list-item-sym.ftl">
+        <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/article.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+            <state relative-caret-position="259">
+              <caret line="576" column="6" lean-forward="true" selection-start-line="576" selection-start-column="6" selection-end-line="576" selection-end-column="6" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,11 +56,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>article_info</find>
-      <find>fn-ellipsis ft-fade ft-smaller list-info</find>
-      <find>article-list</find>
-      <find>reply_info_count</find>
-      <find>tooltipped-e</find>
       <find>sms.accessKeyId</find>
       <find>sm</find>
       <find>qiniu</find>
@@ -135,6 +81,11 @@
       <find>invalidUserName</find>
       <find>invalidPhoneVerifyCodeLabel</find>
       <find>\u5c0f\u8d34\u58eb</find>
+      <find>wee</find>
+      <find>\u4e0b\u4e00\u4ee3\u7684\u793e\u533a\u7cfb\u7edf\uff0c\u4e3a\u672a\u6765\u800c\u6784\u5efa</find>
+      <find>commentContent</find>
+      <find>jsdelivr</find>
+      <find>setMaxLifetime</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/symphony-master</dir>
@@ -154,9 +105,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/latke-core/pom.xml" />
-        <option value="$PROJECT_DIR$/latke-repository-mysql/pom.xml" />
-        <option value="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/AbstractCache.java" />
         <option value="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/NoneCache.java" />
         <option value="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/caffeine/CaffeineCache.java" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/cache/PublicCache.java" />
@@ -170,8 +118,6 @@
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/macro-list.ftl" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/scss/index.scss" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/util/Symphonys.java" />
-        <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/SeaweedFSUtil.java" />
-        <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/FileUploadProcessor.java" />
         <option value="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/Cache.java" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/CommentMgmtService.java" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/ArticleCommentService.java" />
@@ -179,14 +125,12 @@
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/model/Follow.java" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/model/UserExt.java" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/css/index.css" />
-        <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/article.ftl" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/header.ftl" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/IndexProcessor.java" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/mobile/verify/login.ftl" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/js/common.js" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/model/Common.java" />
-        <option value="$PROJECT_DIR$/symphony-master/src/main/resources/symphony.properties" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/verify/register.ftl" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/mobile/verify/register.ftl" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/resources/latke.properties" />
@@ -201,10 +145,17 @@
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/util/Validators.java" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/person-info.ftl" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/ArticleProcessor.java" />
-        <option value="$PROJECT_DIR$/symphony-master/src/main/resources/lang_zh_CN.properties" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/LoginProcessor.java" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/list-item-sym.ftl" />
         <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/list-item.ftl" />
+        <option value="$PROJECT_DIR$/symphony-master/src/main/resources/symphony.properties" />
+        <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/footer.ftl" />
+        <option value="$PROJECT_DIR$/symphony-master/src/main/resources/lang_zh_CN.properties" />
+        <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/SeaweedFSUtil.java" />
+        <option value="$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/FileUploadProcessor.java" />
+        <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/skin.properties" />
+        <option value="$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/article.ftl" />
+        <option value="$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/repository/jdbc/util/Connections.java" />
       </list>
     </option>
   </component>
@@ -282,46 +233,7 @@
               <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="cache" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="processor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="Resource Bundle 'lang'" type="a6c14932:ResourceBundleNode" />
             </path>
             <path>
               <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
@@ -330,6 +242,25 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symphony" type="462c0819:PsiDirectoryNode" />
+              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symphony" type="462c0819:PsiDirectoryNode" />
+              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
@@ -349,38 +280,6 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="skins" type="462c0819:PsiDirectoryNode" />
               <item name="classic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="skins" type="462c0819:PsiDirectoryNode" />
-              <item name="classic" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="skins" type="462c0819:PsiDirectoryNode" />
-              <item name="mobile" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="latke-parent" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symphony" type="462c0819:PsiDirectoryNode" />
-              <item name="symphony-master" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="skins" type="462c0819:PsiDirectoryNode" />
-              <item name="mobile" type="462c0819:PsiDirectoryNode" />
-              <item name="verify" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -398,7 +297,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -496,7 +395,7 @@
       <workItem from="1558611016907" duration="40000" />
       <workItem from="1558662731858" duration="2146000" />
       <workItem from="1558682084786" duration="1977000" />
-      <workItem from="1558687811056" duration="2195000" />
+      <workItem from="1558687811056" duration="8852000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1557892553475</created>
@@ -561,11 +460,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558586453307</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add phone reg &amp; login">
+      <created>1558690247823</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1558690247823</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85980000" />
+    <option name="totallyTimeSpent" value="92637000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,7 +497,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290993" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49920633" weight="0.37066975" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.25288683" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.25288683" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3290993" />
@@ -710,7 +616,8 @@
     <MESSAGE value="add redis methods" />
     <MESSAGE value="modify reg" />
     <MESSAGE value="Merge branch 'master' of https://github.com/bigxigua/xiaose into bigxigua-master&#10;&#10;# Conflicts:&#10;#&#9;symphony-master/target/classes/org/b3log/symphony/processor/ArticleProcessor.class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/bigxigua/xiaose into bigxigua-master&#10;&#10;# Conflicts:&#10;#&#9;symphony-master/target/classes/org/b3log/symphony/processor/ArticleProcessor.class" />
+    <MESSAGE value="add phone reg &amp; login" />
+    <option name="LAST_COMMIT_MESSAGE" value="add phone reg &amp; login" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
@@ -722,330 +629,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/article.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="110" column="57" selection-start-line="110" selection-start-column="44" selection-end-line="110" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/domains.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-132">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/UserMgmtService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2175">
-          <caret line="552" column="12" selection-start-line="552" selection-start-column="12" selection-end-line="552" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/mobile/verify/login.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="45" column="50" selection-start-line="45" selection-start-column="50" selection-end-line="45" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/verify/login.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="38" column="118" selection-start-line="38" selection-start-column="101" selection-end-line="38" selection-end-column="118" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1242">
-          <caret line="1425" column="2" selection-start-line="1425" selection-start-column="2" selection-end-line="1425" selection-end-column="2" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#111#119#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/verify/register2.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="53" column="46" lean-forward="true" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/model/Common.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="837" column="64" selection-start-line="837" selection-start-column="53" selection-end-line="837" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/servlet/RequestContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="433" column="31" selection-start-line="433" selection-start-column="31" selection-end-line="433" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/resources/symphony.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="175" column="8" lean-forward="true" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/Keys.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="123" column="59" lean-forward="true" selection-start-line="123" selection-start-column="59" selection-end-line="123" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/resources/latke.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="24" lean-forward="true" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/Latkes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="271" selection-start-line="271" selection-end-line="271" />
-          <folding>
-            <element signature="e#12794#12795#0" expanded="true" />
-            <element signature="e#12847#12848#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/AbstractCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
-          <folding>
-            <element signature="e#987#988#0" expanded="true" />
-            <element signature="e#1014#1015#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/model/Option.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/cache/OptionCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/CacheFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="55" column="68" selection-start-line="55" selection-start-column="59" selection-end-line="55" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/cache/CommunalCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="75" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/redis/clients/jedis/2.9.3/jedis-2.9.3-sources.jar!/redis/clients/jedis/Jedis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="132" column="62" lean-forward="true" selection-start-line="132" selection-start-column="62" selection-end-line="132" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/redis/RedisCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="80" column="20" lean-forward="true" selection-start-line="80" selection-start-column="20" selection-end-line="80" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/cache/Cache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="71" column="9" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/model/Permission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-repository-mysql/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-412" />
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/symphony.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3592">
-          <caret line="288" column="50" lean-forward="true" selection-start-line="288" selection-start-column="50" selection-end-line="288" selection-end-column="50" />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/CronMgmtService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="122" column="45" lean-forward="true" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/3.2.0/HikariCP-3.2.0.jar!/com/zaxxer/hikari/HikariDataSource.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/repository/jdbc/util/Connections.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2520">
-          <caret line="193" column="37" selection-start-line="193" selection-start-column="31" selection-end-line="193" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="82" selection-end-column="34" />
-        </state>
-      </provider>
-      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/InitMgmtService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="222" column="62" selection-start-line="222" selection-start-column="62" selection-end-line="222" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-repository-mysql/src/main/java/org/b3log/latke/repository/mysql/MysqlJdbcDatabaseSolution.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="59" column="55" selection-start-line="59" selection-start-column="55" selection-end-line="59" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/resources/local.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/VerifycodeMgmtService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-74">
-          <caret line="82" column="58" selection-start-line="82" selection-start-column="38" selection-end-line="82" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/ioc/JavassistMethodHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.6/commons-lang-2.6.jar!/org/apache/commons/lang/StringUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding>
-            <element signature="e#569#570#0" expanded="true" />
-            <element signature="e#624#625#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/SmsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="104" column="29" lean-forward="true" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/util/Validators.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="21" column="47" lean-forward="true" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/advice/validate/UserRegisterValidation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-429">
-          <caret line="154" column="9" lean-forward="true" selection-start-line="154" selection-start-column="9" selection-end-line="154" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/domains.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="29" column="39" lean-forward="true" selection-start-line="29" selection-start-column="39" selection-end-line="29" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/activity/gobang.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/IndexProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="243" column="7" lean-forward="true" selection-start-line="243" selection-start-column="7" selection-end-line="243" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/ArticleProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="888" selection-start-line="888" selection-end-line="888" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/resources/lang_zh_CN.properties">
-      <provider editor-type-id="ResourceBundle" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="1031" column="23" lean-forward="true" selection-start-line="1031" selection-start-column="23" selection-end-line="1031" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/person-info.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -1074,10 +657,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/LoginProcessor.java">
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/list-item-sym.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="550" lean-forward="true" selection-start-line="550" selection-end-line="550" />
+        <state relative-caret-position="460">
+          <caret line="69" column="22" lean-forward="true" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1088,10 +671,336 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/list-item-sym.ftl">
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/LoginProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="56" column="53" selection-start-line="56" selection-start-column="53" selection-end-line="56" selection-end-column="53" />
+        <state relative-caret-position="337">
+          <caret line="559" column="79" lean-forward="true" selection-start-line="559" selection-start-column="79" selection-end-line="559" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/scripts/build_docker_container.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/WEB-INF/static-resources.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1227" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/util/Symphonys.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="773" column="54" lean-forward="true" selection-start-line="773" selection-start-column="54" selection-end-line="773" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/resources/symphony.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="89" column="21" selection-start-line="89" selection-start-column="21" selection-end-line="89" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/resources/lang_zh_CN.properties">
+      <provider editor-type-id="ResourceBundle" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="615" column="20" lean-forward="true" selection-start-line="615" selection-start-column="20" selection-end-line="615" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/footer.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/AudioMgmtService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/CronMgmtService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="708">
+          <caret line="122" column="45" lean-forward="true" selection-start-line="122" selection-start-column="45" selection-end-line="122" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/FollowProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/lokra/seaweedfs/seaweedfs-client/0.7.3.RELEASE/seaweedfs-client-0.7.3.RELEASE.jar!/org/lokra/seaweedfs/core/FileTemplate.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="151" column="18" selection-start-line="151" selection-start-column="18" selection-end-line="151" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/service/SeaweedFSUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="68" column="24" lean-forward="true" selection-start-line="68" selection-start-column="24" selection-end-line="68" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/skin.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/java/org/b3log/symphony/processor/FileUploadProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="274" column="13" lean-forward="true" selection-start-line="274" selection-start-column="13" selection-end-line="274" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/common/comment.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-828">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/qna.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1035" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/side.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-426" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/chat-room.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1080">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/add-article.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-934">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/m-article.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="472" lean-forward="true" selection-start-line="472" selection-end-line="472" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/channel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4119">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#a#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="169" column="5" lean-forward="true" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#111#119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-415">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/lib/compress/article-libs.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/lib/compress/libs.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/lib/aplayer/APlayer.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/lib/echarts-2.2.7/echarts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="62" lean-forward="true" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/repository/jdbc/JdbcFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-645">
+          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/repository/jdbc/JdbcRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4254">
+          <caret line="49" column="7" lean-forward="true" selection-start-line="49" selection-start-column="7" selection-end-line="49" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/3.3.1/HikariCP-3.3.1.jar!/com/zaxxer/hikari/HikariConfig.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="153" column="16" selection-start-line="153" selection-start-column="16" selection-end-line="153" selection-end-column="16" />
+          <folding>
+            <element signature="e#5138#5139#0" expanded="true" />
+            <element signature="e#5186#5187#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/zaxxer/HikariCP/3.3.1/HikariCP-3.3.1-sources.jar!/com/zaxxer/hikari/HikariConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="233" column="25" selection-start-line="233" selection-start-column="25" selection-end-line="233" selection-end-column="25" />
+          <folding>
+            <element signature="e#6963#6964#0" expanded="true" />
+            <element signature="e#7008#7009#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/repository/jdbc/util/Connections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-595">
+          <caret line="123" selection-start-line="123" selection-end-line="123" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/latke-core/src/main/java/org/b3log/latke/repository/jdbc/util/JdbcRepositories.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="46" column="7" lean-forward="true" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/lib/sound-recorder/SoundRecorder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1976" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/lib/livephotoskit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-841">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/css/mobile-base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3053" selection-start-column="3053" selection-end-column="3053" />
+          <folding>
+            <element signature="e#8826#9313#2" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/article.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/header.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-490" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/macro-head.ftl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/statistic.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2985" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/js/symbol-defs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="39" column="78" lean-forward="true" selection-start-line="39" selection-start-column="78" selection-end-line="39" selection-end-column="78" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#svg#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/index.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/symphony-master/src/main/webapp/skins/classic/article.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="576" column="6" lean-forward="true" selection-start-line="576" selection-start-column="6" selection-end-line="576" selection-end-column="6" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

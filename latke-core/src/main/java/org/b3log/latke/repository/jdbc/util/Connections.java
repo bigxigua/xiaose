@@ -121,6 +121,7 @@ public final class Connections {
                     hikari.setValidationTimeout(2000);
                     hikari.setConnectionTimeout(2000);
                     hikari.setLeakDetectionThreshold(300000);
+                    hikari.setMaxLifetime(60000);
                 }
 
                 hikari.setUsername(userName);

@@ -21,12 +21,12 @@
     <div class="wrapper">
         <div class="slogan">
         ${indexIntroLabel} &nbsp; &nbsp;
-            <a href="https://github.com/b3log/symphony" target="_blank" class="tooltipped tooltipped-n"
-               aria-label="${siteCodeLabel}">
-                <svg class="icon-github">
-                    <use xlink:href="#github"></use>
-                </svg>
-            </a> &nbsp;
+<#--            <a href="https://github.com/b3log/symphony" target="_blank" class="tooltipped tooltipped-n"-->
+<#--               aria-label="${siteCodeLabel}">-->
+<#--                <svg class="icon-github">-->
+<#--                    <use xlink:href="#github"></use>-->
+<#--                </svg>-->
+<#--            </a> &nbsp;-->
         </div>
         <div class="fn-flex-1">
             <div class="footer-nav fn-clear">
@@ -36,7 +36,7 @@
                 <a href="${servePath}/tags">${tagLabel}</a>
                 <a href="${servePath}/statistic">${dataStatLabel}</a>
                 <div class="fn-right">
-                ${visionLabel}
+                ${visionLabel}xx
                 </div>
             </div>
             <div class="fn-clear ft-smaller">
@@ -45,8 +45,8 @@
                     <#if footerBeiAnHao != ''>
                         <a href="http://www.miitbeian.gov.cn/" target="_blank">${footerBeiAnHao}</a> •
                     </#if>
-                    © ${year} <a href="https://b3log.org" target="_blank">B3log 开源</a>旗下云南链滴科技有限公司版权所有 •
-                    <a href="https://sym.b3log.org" target="_blank">Sym</a>
+                    © ${year} <a href="https://www.scboy.com" target="_blank">星际老男孩</a>科技有限公司版权所有 •
+                    <a href="javascript:;" target="_blank">By Tangxd</a>
                 ${version} • ${elapsed?c}ms
                 </div>
             </div>

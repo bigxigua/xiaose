@@ -59,7 +59,15 @@ public class SeaweedFSUtil {
         FileHandleStatus fileHandleStatus = template.saveFileByStream(fileName, in);
         String fileUrl = template.getFileUrl(fileHandleStatus.getFileId());
         logger.debug("SeaweedFSUtil.uploadFile FILE_URL={}", fileUrl);
-        resultMap.put(FILE_URL, fileUrl.replace(",", "/") + "/" + fileName);
+        fileUrl = fileUrl.replace(",", "/");
+        resultMap.put(FILE_URL, fileUrl.replace(",", "/") + "/" + getFileName(fileName));
         return resultMap;
+    }
+
+    private String getFileName(String path) {
+        if (!path.contains("/")) {
+            return path;
+        }
+        return path.substring(path.lastIndexOf("/") + 1);
     }
 }

@@ -242,6 +242,7 @@ public class FileUploadProcessor {
                     Map<String, String> r = fsUtil.uploadFile(fileName, files.get(i).getFileInputStream());
                     if (r.containsKey(SeaweedFSUtil.FILE_URL)) {
                         succMap.put(originalName, r.get(SeaweedFSUtil.FILE_URL));
+                        countDownLatch.countDown();
                     }
                 } else if (QN_ENABLED) {
                     bytes = fileBytes.get(i);
