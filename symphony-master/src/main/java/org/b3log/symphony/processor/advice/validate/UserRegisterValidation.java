@@ -56,7 +56,8 @@ public class UserRegisterValidation extends ProcessAdvice {
     /**
      * Min user name length.
      */
-    public static final int MIN_USER_NAME_LENGTH = 3;
+    public static final int MIN_USER_NAME_LENGTH = 4;
+
     /**
      * Logger.
      */
@@ -131,7 +132,16 @@ public class UserRegisterValidation extends ProcessAdvice {
             return true;
         }
 
-        final int length = name.length();
+        int length = 0;
+        String chinese = "[\u4e00-\u9fa5]";
+        for (int i = 0; i < name.length(); i++) {
+            String temp = name.substring(i, i + 1);
+            if (temp.matches(chinese)) {
+                length += 2;
+            } else {
+                length += 1;
+            }
+        }
         if (length < MIN_USER_NAME_LENGTH || length > MAX_USER_NAME_LENGTH) {
             return true;
         }

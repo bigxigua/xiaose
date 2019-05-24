@@ -1475,6 +1475,24 @@ var Validate = {
             isValidate = false
         }
         break
+      case 'userName':
+          var str = data.target.val();
+          var len = 0;
+          for (var i = 0; i < str.length; i++) {
+              var a = str.charAt(i);
+              if (a.match(/[^\x00-\xff]/ig) != null) {//\x00-\xff→GBK双字节编码范围
+                  len += 2;
+              }
+              else {
+                  len += 1;
+              }
+          }
+          if (len < data.min || len > data.max) {
+              isValidate = false
+          } else {
+              isValidate = true
+          }
+          break
       case 'password':
         if (data.target.val().length < 6 || data.target.val().length > 16 ||
           !/\d/.test(data.target.val()) ||
