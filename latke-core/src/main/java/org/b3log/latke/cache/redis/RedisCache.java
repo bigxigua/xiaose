@@ -44,7 +44,7 @@ public final class RedisCache extends AbstractCache {
         try {
             jedis = Connections.getJedis();
 
-            return jedis.exists(key);
+            return jedis.exists(getName() + key);
         } catch (final Exception e) {
             LOGGER.log(Level.ERROR, "Contains key [" + key + "] failed", e);
 
@@ -187,7 +187,7 @@ public final class RedisCache extends AbstractCache {
         try {
             jedis = Connections.getJedis();
 
-            jedis.zadd(key, score, value.toString());
+            jedis.zadd(getName() + key, score, value.toString());
         } catch (final Exception e) {
             LOGGER.log(Level.ERROR, "Zadd data to cache with key [" + key + "] failed", e);
         } finally {
@@ -202,7 +202,7 @@ public final class RedisCache extends AbstractCache {
         try {
             jedis = Connections.getJedis();
 
-            jedis.zadd(key, values);
+            jedis.zadd(getName() + key, values);
         } catch (final Exception e) {
             LOGGER.log(Level.ERROR, "Zadd data to cache with key [" + key + "] failed", e);
         } finally {
@@ -217,7 +217,7 @@ public final class RedisCache extends AbstractCache {
         try {
             jedis = Connections.getJedis();
 
-            Set<String> rlt = jedis.zrangeByScore(key, "-inf", "+inf", 0, limit);
+            Set<String> rlt = jedis.zrangeByScore(getName() + key, "-inf", "+inf", 0, limit);
             List<JSONObject> objs = new ArrayList<>();
             for (String s : rlt) {
                 objs.add(new JSONObject(s));
@@ -237,7 +237,7 @@ public final class RedisCache extends AbstractCache {
         Jedis jedis = null;
         try {
             jedis = Connections.getJedis();
-            return jedis.exists(key);
+            return jedis.exists(getName() + key);
         } catch (final Exception e) {
             LOGGER.log(Level.ERROR, "exist data to cache with key [" + key + "] failed", e);
         } finally {

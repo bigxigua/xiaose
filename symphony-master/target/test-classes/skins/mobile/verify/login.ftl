@@ -35,7 +35,7 @@
                         <svg><use xlink:href="#logo"></use></svg>
                         <div class="input-wrap">
                             <svg><use xlink:href="#userrole"></use></svg>
-                            <input id="nameOrEmail" type="text" autofocus="autofocus" placeholder="${nameOrEmailLabel}" autocomplete="off" />
+                            <input id="nameOrEmail" type="text" autofocus="autofocus" placeholder="${nameOrMobileLabel}" autocomplete="off" />
                         </div>
                         <div class="input-wrap">
                             <svg><use xlink:href="#locked"></use></svg>

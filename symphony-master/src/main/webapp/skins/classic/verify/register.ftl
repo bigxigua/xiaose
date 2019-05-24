@@ -48,7 +48,11 @@
 <#--                            <img id="registerCaptchaImg" class="fn-pointer captcha-img " src="${servePath}/captcha" onclick="this.src = '${servePath}/captcha?' + (new Date()).getTime()" />-->
 <#--                            <input type="text" id="registerCaptcha" class="captcha-input" placeholder="${captchaLabel}" />-->
 <#--                        </div>-->
-                        <div class="l-captcha" data-site-key="0e72251b23e593f6d364edd438cc2880"></div>
+                        <div class="l-captcha" data-callback="getResponse" data-site-key="0e72251b23e593f6d364edd438cc2880"></div>
+                        <div class="input-wrap">
+                            <svg><use xlink:href="#userrole"></use></svg>
+                            <input id="phoneVerifyCode" type="text" placeholder="${phoneVerifyCodePlaceholderLabel}" autocomplete="off" />
+                        </div>
                         <div class="input-wrap<#if "2" != miscAllowRegister> fn-none</#if>">
                             <svg><use xlink:href="#heart"></use></svg>
                             <input id="registerInviteCode" type="text" placeholder="${invitecodePlaceholderLabel}" autocomplete="off" />
@@ -80,9 +84,34 @@
             }
             Verify.init();
             Label.invalidUserNameLabel = "${invalidUserNameLabel}";
-            Label.invalidEmailLabel = "${invalidEmailLabel}";
+            Label.invalidEmailLabel = "${invalidPhoneLabel}";
             Label.confirmPwdErrorLabel = "${confirmPwdErrorLabel}";
             Label.captchaErrorLabel = "${captchaErrorLabel}";
+            Label.invalidPhoneVerifyCodeLabel = "${invalidPhoneVerifyCodeLabel}";
+
+
+            function getResponse(resp){
+                console.log(resp);  // resp 即验证成功后获取的值
+
+                var requestJSONObject = {
+                    phoneNo: $("#registerUserEmail").val().replace(/(^\s*)|(\s*$)/g, ""),
+                    lsmRespCode: resp
+                };
+                $.ajax({
+                    url: Label.servePath + "/sendPhoneCode",
+                    type: "POST",
+                    cache: false,
+                    data: JSON.stringify(requestJSONObject),
+                    success: function (result, textStatus) {
+                        if (result.sc) {
+                            $("#registerTip").addClass('succ').html('<ul><li>' + result.msg + '</li></ul>');
+                        } else {
+                            $("#registerTip").addClass('error').removeClass('succ').html('<ul><li>' + result.msg + '</li></ul>');
+                            LUOCAPTCHA.reset()
+                        }
+                    }
+                });
+            }
         </script>
     </body>
 </html>

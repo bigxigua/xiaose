@@ -835,7 +835,7 @@ public final class Common {
 
     public static final String PHONE_NO = "phoneNo";
 
-    public static final String LUOSIMAO_RESP_CODE = "luosimaoRespCode";
+    public static final String LUOSIMAO_RESP_CODE = "lsmRespCode";
 
     /**
      * Private constructor.

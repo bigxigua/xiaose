@@ -31,10 +31,7 @@ import org.b3log.latke.servlet.advice.RequestProcessAdviceException;
 import org.b3log.latke.util.Strings;
 import org.b3log.symphony.model.*;
 import org.b3log.symphony.processor.CaptchaProcessor;
-import org.b3log.symphony.service.InvitecodeQueryService;
-import org.b3log.symphony.service.OptionQueryService;
-import org.b3log.symphony.service.RoleQueryService;
-import org.b3log.symphony.service.UserQueryService;
+import org.b3log.symphony.service.*;
 import org.b3log.symphony.util.Validators;
 import org.json.JSONObject;
 
@@ -109,6 +106,9 @@ public class UserRegisterValidation extends ProcessAdvice {
     @Inject
     private RoleQueryService roleQueryService;
 
+    @Inject
+    private SmsService smsService;
+
     /**
      * Checks whether the specified name is invalid.
      * <p>
@@ -137,7 +137,6 @@ public class UserRegisterValidation extends ProcessAdvice {
         }
 
 
-
 //        char c;
 //        for (int i = 0; i < length; i++) {
 //            c = name.charAt(i);
@@ -151,7 +150,7 @@ public class UserRegisterValidation extends ProcessAdvice {
 //        if(!Validators.isMobile(name)) {
 //            return true;
 //        }
-        if(!Validators.verifyUserName(name)) {
+        if (!Validators.verifyUserName(name)) {
             return true;
         }
 
@@ -225,13 +224,17 @@ public class UserRegisterValidation extends ProcessAdvice {
         }
 
         // open register
-        if (useInvitationLink || "0".equals(option.optString(Option.OPTION_VALUE))) {
-            final String captcha = requestJSONObject.optString(CaptchaProcessor.CAPTCHA);
-            checkField(CaptchaProcessor.invalidCaptcha(captcha), "registerFailLabel", "captchaErrorLabel");
-        }
+//        if (useInvitationLink || "0".equals(option.optString(Option.OPTION_VALUE))) {
+//            final String captcha = requestJSONObject.optString(CaptchaProcessor.CAPTCHA);
+//            checkField(CaptchaProcessor.invalidCaptcha(captcha), "registerFailLabel", "captchaErrorLabel");
+//        }
+
+        final String mobileVerifyCode = requestJSONObject.optString(Common.PHONE_VERIFY_CODE);
+        final String email = requestJSONObject.optString(User.USER_EMAIL);
+        checkField(email == null, "registerFailLabel", "invalidPhoneVerifyCodeLabel");
+        checkField(!smsService.getPrevCode(email).equals(mobileVerifyCode), "registerFailLabel", "invalidPhoneVerifyCodeFailLabel");
 
         final String name = requestJSONObject.optString(User.USER_NAME);
-        //final String email = requestJSONObject.optString(User.USER_EMAIL);
         final int appRole = requestJSONObject.optInt(UserExt.USER_APP_ROLE);
         final String password = requestJSONObject.optString(User.USER_PASSWORD);
 
@@ -243,8 +246,7 @@ public class UserRegisterValidation extends ProcessAdvice {
         checkField(invalidUserName(name), "registerFailLabel", "invalidUserNameLabel");
         //checkField(!Strings.isEmail(email), "registerFailLabel", "invalidEmailLabel");
         //checkField(!UserExt.isValidMailDomain(email), "registerFailLabel", "invalidEmail1Label");
-        checkField(UserExt.USER_APP_ROLE_C_HACKER != appRole
-                && UserExt.USER_APP_ROLE_C_PAINTER != appRole, "registerFailLabel", "invalidAppRoleLabel");
+        //checkField(UserExt.USER_APP_ROLE_C_HACKER != appRole && UserExt.USER_APP_ROLE_C_PAINTER != appRole, "registerFailLabel", "invalidAppRoleLabel");
         checkField(invalidUserPassword(password), "registerFailLabel", "invalidPasswordLabel");
     }
 

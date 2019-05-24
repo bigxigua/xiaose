@@ -1469,6 +1469,12 @@ var Validate = {
           isValidate = false
         }
         break
+      case 'phone':
+        if (!/^[1][0,3,4,5,6,7,8,9][0-9]{9}$/i.test(
+            data.target.val())) {
+            isValidate = false
+        }
+        break
       case 'password':
         if (data.target.val().length < 6 || data.target.val().length > 16 ||
           !/\d/.test(data.target.val()) ||

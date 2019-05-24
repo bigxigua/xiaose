@@ -53,7 +53,7 @@ public class SmsService {
 
     private static final Logger LOGGER = Logger.getLogger(SmsService.class);
 
-    private static final String REG_VERIFY_SMS_CODE = "SMS_165108475";
+    private static final String REG_VERIFY_SMS_TEMPLATE = Symphonys.get("sms.regVerifySmsTemplate");
 
     @Inject
     private CommunalCache cache;
@@ -85,11 +85,11 @@ public class SmsService {
     public Result sendRegisterCodeSms(String phoneNumber) {
         int code = new Random().nextInt(10000);
         String codeStr = String.format("%04d", code);
-        JSONObject rtn = sendSms(phoneNumber, REG_VERIFY_SMS_CODE, "scboy", "{\"code\":\"" + codeStr + "\"}");
+        JSONObject rtn = sendSms(phoneNumber, REG_VERIFY_SMS_TEMPLATE, "scboy", "{\"code\":\"" + codeStr + "\"}");
         if (rtn != null) {
-            String rCode = rtn.getString("code");
+            String rCode = rtn.getString("Code");
             if ("OK".equals(rCode)) {
-                cache.get().put(String.format("PhoneVerifyCodes:%s",phoneNumber),new JSONObject().put("code",rCode),5 * 60);
+                cache.get().put(String.format("PhoneVerifyCodes:%s",phoneNumber),new JSONObject().put("code",codeStr),5 * 60);
                 return new Result(true, "发送成功");
             }
             return new Result(false, rtn.getString("Message"));
@@ -100,7 +100,7 @@ public class SmsService {
     public String getPrevCode(String phoneNumber) {
         JSONObject obj = cache.get().get(String.format("PhoneVerifyCodes:%s",phoneNumber));
         if(obj == null) {
-            return null;
+            return "";
         }
         return obj.getString("code");
     }

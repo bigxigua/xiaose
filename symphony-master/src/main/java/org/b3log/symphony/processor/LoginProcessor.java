@@ -38,6 +38,7 @@ import org.b3log.latke.servlet.annotation.RequestProcessor;
 import org.b3log.latke.servlet.renderer.AbstractFreeMarkerRenderer;
 import org.b3log.latke.util.Locales;
 import org.b3log.latke.util.Requests;
+import org.b3log.symphony.cache.CommunalCache;
 import org.b3log.symphony.model.*;
 import org.b3log.symphony.processor.advice.CSRFToken;
 import org.b3log.symphony.processor.advice.LoginCheck;
@@ -493,183 +494,78 @@ public class LoginProcessor {
         dataModelService.fillHeaderAndFooter(context, dataModel);
     }
 
-    @RequestProcessing(value = "/registerPhone", method = HttpMethod.POST)
-    @Before(UserRegisterValidation.class)
-    public void registerPhone(final RequestContext context) {
-        context.renderJSON();
-        final HttpServletRequest request = context.getRequest();
-        final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
-        final String name = requestJSONObject.optString(User.USER_NAME);
-        final String invitecode = requestJSONObject.optString(Invitecode.INVITECODE);
-        final String referral = requestJSONObject.optString(Common.REFERRAL);
-        final String mobileVerifyCode = requestJSONObject.optString(Common.PHONE_VERIFY_CODE);
-
-        final JSONObject user = new JSONObject();
-        user.put(User.USER_NAME, name);
-        user.put(User.USER_EMAIL, "");
-        user.put(User.USER_PASSWORD, "");
-        final Locale locale = Locales.getLocale();
-        user.put(UserExt.USER_LANGUAGE, locale.getLanguage() + "_" + locale.getCountry());
-
-        if (!smsService.getPrevCode(name).equals(mobileVerifyCode)) {
-            context.renderTrueResult().renderMsg(langPropsService.get("mobileVerifycodeSentLabel"));
-            return;
-        }
-
-        try {
-            final String newUserId = userMgmtService.addUser(user);
-
-            final String allowRegister = optionQueryService.getAllowRegister();
-            if ("2".equals(allowRegister) && StringUtils.isNotBlank(invitecode)) {
-                final JSONObject ic = invitecodeQueryService.getInvitecode(invitecode);
-                ic.put(Invitecode.USER_ID, newUserId);
-                ic.put(Invitecode.USE_TIME, System.currentTimeMillis());
-                final String icId = ic.optString(Keys.OBJECT_ID);
-
-                invitecodeMgmtService.updateInvitecode(icId, ic);
-            }
-
-            context.renderTrueResult().renderMsg(langPropsService.get("verifycodeSentLabel"));
-
-        } catch (final ServiceException e) {
-            final String msg = langPropsService.get("registerFailLabel") + " - " + e.getMessage();
-            LOGGER.log(Level.ERROR, msg + "[name={0}]", name);
-
-            context.renderMsg(msg);
-        }
-    }
+    @Inject
+    private CommunalCache cache;
 
     @RequestProcessing(value = "/sendPhoneCode", method = HttpMethod.POST)
-    @Before(UserRegisterValidation.class)
     public void sendPhoneCode(final RequestContext context) {
         context.renderJSON();
-        final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
+        final JSONObject requestJSONObject = context.requestJSON();
         final String phone = requestJSONObject.optString(Common.PHONE_NO);
         final String lsmResponse = requestJSONObject.optString(Common.LUOSIMAO_RESP_CODE);
-        if(!Validators.isMobile(phone)) {
+        if (!Validators.isMobile(phone)) {
             context.renderFalseResult().renderMsg("手机号码格式错误");
             return;
         }
 
         Map<String, String> params = new HashMap<>();
-        params.put("api_key", Symphonys.get("luosimao.sitekey"));
+        params.put("api_key", Symphonys.get("luosimao.apikey"));
         params.put("response", lsmResponse);
-        String resp = HttpUtils.post("https://captcha.luosimao.com/api/site_verify",params);
+        String resp = HttpUtils.post("https://captcha.luosimao.com/api/site_verify", params);
         JSONObject jObj = new JSONObject(resp);
-        if(jObj.getInt("error") != 0) {
+        if (jObj.getInt("error") != 0) {
             LOGGER.log(Level.WARN, "send phone code fail:{0}", jObj.toString());
             context.renderFalseResult().renderMsg(jObj.getString("res"));
             return;
         }
         SmsService.Result r = smsService.sendRegisterCodeSms(phone);
-        if(r.isOk()) {
-            context.renderTrueResult().renderMsg("短信已发送");
+        if (r.isOk()) {
+            context.renderTrueResult().renderMsg("短信已发送,5分钟内验证码有效");
             return;
         }
-        context.renderFalseResult().renderMsg("短信发送失败，请稍后再试");
+        context.renderFalseResult().renderMsg("短信发送失败:" + r.getMessage());
     }
 
-    /**
-     * Register Step 1.
-     *
-     * @param context the specified context
-     */
-    @RequestProcessing(value = "/register", method = HttpMethod.POST)
+    @RequestProcessing(value = "/registerPhone", method = HttpMethod.POST)
     @Before(UserRegisterValidation.class)
-    public void register(final RequestContext context) {
+    public void registerPhone(final RequestContext context) {
         context.renderJSON();
         final HttpServletRequest request = context.getRequest();
+        final HttpServletResponse response = context.getResponse();
         final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
         final String name = requestJSONObject.optString(User.USER_NAME);
-        final String email = requestJSONObject.optString(User.USER_EMAIL);
+        final String phone = requestJSONObject.optString(User.USER_EMAIL);
         final String invitecode = requestJSONObject.optString(Invitecode.INVITECODE);
         final String referral = requestJSONObject.optString(Common.REFERRAL);
 
+        final String password = requestJSONObject.optString(User.USER_PASSWORD); // Hashed
+
         final JSONObject user = new JSONObject();
         user.put(User.USER_NAME, name);
-        user.put(User.USER_EMAIL, email);
-        user.put(User.USER_PASSWORD, "");
+        user.put(User.USER_EMAIL, phone);
+        user.put(User.USER_PASSWORD, password);
         final Locale locale = Locales.getLocale();
         user.put(UserExt.USER_LANGUAGE, locale.getLanguage() + "_" + locale.getCountry());
+        user.put(UserExt.USER_APP_ROLE, 0);
+        user.put(UserExt.USER_STATUS, UserExt.USER_STATUS_C_VALID);
 
         try {
-            final String newUserId = userMgmtService.addUser(user);
+            final String userId = userMgmtService.addUser(user);
+            Sessions.login(response, userId, false);
 
-            final JSONObject verifycode = new JSONObject();
-            verifycode.put(Verifycode.BIZ_TYPE, Verifycode.BIZ_TYPE_C_REGISTER);
-            String code = RandomStringUtils.randomAlphanumeric(6);
-            if (StringUtils.isNotBlank(referral)) {
-                code += "r=" + referral;
-            }
-            verifycode.put(Verifycode.CODE, code);
-            verifycode.put(Verifycode.EXPIRED, DateUtils.addDays(new Date(), 1).getTime());
-            verifycode.put(Verifycode.RECEIVER, email);
-            verifycode.put(Verifycode.STATUS, Verifycode.STATUS_C_UNSENT);
-            verifycode.put(Verifycode.TYPE, Verifycode.TYPE_C_EMAIL);
-            verifycode.put(Verifycode.USER_ID, newUserId);
-            verifycodeMgmtService.addVerifycode(verifycode);
+            final String ip = Requests.getRemoteAddr(request);
+            userMgmtService.updateOnlineStatus(user.optString(Keys.OBJECT_ID), ip, true, true);
+
 
             final String allowRegister = optionQueryService.getAllowRegister();
             if ("2".equals(allowRegister) && StringUtils.isNotBlank(invitecode)) {
                 final JSONObject ic = invitecodeQueryService.getInvitecode(invitecode);
-                ic.put(Invitecode.USER_ID, newUserId);
+                ic.put(Invitecode.USER_ID, userId);
                 ic.put(Invitecode.USE_TIME, System.currentTimeMillis());
                 final String icId = ic.optString(Keys.OBJECT_ID);
 
                 invitecodeMgmtService.updateInvitecode(icId, ic);
             }
-
-            context.renderTrueResult().renderMsg(langPropsService.get("verifycodeSentLabel"));
-        } catch (final ServiceException e) {
-            final String msg = langPropsService.get("registerFailLabel") + " - " + e.getMessage();
-            LOGGER.log(Level.ERROR, msg + "[name={0}, email={1}]", name, email);
-
-            context.renderMsg(msg);
-        }
-    }
-
-    /**
-     * Register Step 2.
-     *
-     * @param context the specified context
-     */
-    @RequestProcessing(value = "/register2", method = HttpMethod.POST)
-    @Before(UserRegister2Validation.class)
-    public void register2(final RequestContext context) {
-        context.renderJSON();
-
-        final HttpServletRequest request = context.getRequest();
-        final HttpServletResponse response = context.getResponse();
-        final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
-
-        final String password = requestJSONObject.optString(User.USER_PASSWORD); // Hashed
-        final int appRole = requestJSONObject.optInt(UserExt.USER_APP_ROLE);
-        final String referral = requestJSONObject.optString(Common.REFERRAL);
-        final String userId = requestJSONObject.optString(UserExt.USER_T_ID);
-
-        String name = null;
-        String email = null;
-        try {
-            final JSONObject user = userQueryService.getUser(userId);
-            if (null == user) {
-                context.renderMsg(langPropsService.get("registerFailLabel") + " - " + "User Not Found");
-
-                return;
-            }
-
-            name = user.optString(User.USER_NAME);
-            email = user.optString(User.USER_EMAIL);
-
-            user.put(UserExt.USER_APP_ROLE, appRole);
-            user.put(User.USER_PASSWORD, password);
-            user.put(UserExt.USER_STATUS, UserExt.USER_STATUS_C_VALID);
-
-            userMgmtService.addUser(user);
-
-            Sessions.login(response, userId, false);
-
-            final String ip = Requests.getRemoteAddr(request);
-            userMgmtService.updateOnlineStatus(user.optString(Keys.OBJECT_ID), ip, true, true);
 
             if (StringUtils.isNotBlank(referral) && !UserRegisterValidation.invalidUserName(referral)) {
                 final JSONObject referralUser = userQueryService.getUserByName(referral);
@@ -714,14 +610,169 @@ public class LoginProcessor {
 
             context.renderTrueResult();
 
-            LOGGER.log(Level.INFO, "Registered a user [name={0}, email={1}]", name, email);
+            LOGGER.log(Level.INFO, "Registered a user [name={0}, mobile={1}]", name, phone);
+
         } catch (final ServiceException e) {
             final String msg = langPropsService.get("registerFailLabel") + " - " + e.getMessage();
-            LOGGER.log(Level.ERROR, msg + " [name={0}, email={1}]", name, email);
+            LOGGER.log(Level.ERROR, msg + "[name={0}, mobile={1}]", name, phone);
 
             context.renderMsg(msg);
         }
     }
+
+//    /**
+//     * Register Step 1.
+//     *
+//     * @param context the specified context
+//     */
+//    @RequestProcessing(value = "/register", method = HttpMethod.POST)
+//    @Before(UserRegisterValidation.class)
+//    public void register(final RequestContext context){
+//        context.renderJSON();
+//        final HttpServletRequest request = context.getRequest();
+//        final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
+//        final String name = requestJSONObject.optString(User.USER_NAME);
+//        final String email = requestJSONObject.optString(User.USER_EMAIL);
+//        final String invitecode = requestJSONObject.optString(Invitecode.INVITECODE);
+//        final String referral = requestJSONObject.optString(Common.REFERRAL);
+//
+//        final JSONObject user = new JSONObject();
+//        user.put(User.USER_NAME, name);
+//        user.put(User.USER_EMAIL, email);
+//        user.put(User.USER_PASSWORD, "");
+//        final Locale locale = Locales.getLocale();
+//        user.put(UserExt.USER_LANGUAGE, locale.getLanguage() + "_" + locale.getCountry());
+//
+//        try {
+//            final String newUserId = userMgmtService.addUser(user);
+//
+//            final JSONObject verifycode = new JSONObject();
+//            verifycode.put(Verifycode.BIZ_TYPE, Verifycode.BIZ_TYPE_C_REGISTER);
+//            String code = RandomStringUtils.randomAlphanumeric(6);
+//            if (StringUtils.isNotBlank(referral)) {
+//                code += "r=" + referral;
+//            }
+//            verifycode.put(Verifycode.CODE, code);
+//            verifycode.put(Verifycode.EXPIRED, DateUtils.addDays(new Date(), 1).getTime());
+//            verifycode.put(Verifycode.RECEIVER, email);
+//            verifycode.put(Verifycode.STATUS, Verifycode.STATUS_C_UNSENT);
+//            verifycode.put(Verifycode.TYPE, Verifycode.TYPE_C_EMAIL);
+//            verifycode.put(Verifycode.USER_ID, newUserId);
+//            verifycodeMgmtService.addVerifycode(verifycode);
+//
+//            final String allowRegister = optionQueryService.getAllowRegister();
+//            if ("2".equals(allowRegister) && StringUtils.isNotBlank(invitecode)) {
+//                final JSONObject ic = invitecodeQueryService.getInvitecode(invitecode);
+//                ic.put(Invitecode.USER_ID, newUserId);
+//                ic.put(Invitecode.USE_TIME, System.currentTimeMillis());
+//                final String icId = ic.optString(Keys.OBJECT_ID);
+//
+//                invitecodeMgmtService.updateInvitecode(icId, ic);
+//            }
+//
+//            context.renderTrueResult().renderMsg(langPropsService.get("verifycodeSentLabel"));
+//        } catch (final ServiceException e) {
+//            final String msg = langPropsService.get("registerFailLabel") + " - " + e.getMessage();
+//            LOGGER.log(Level.ERROR, msg + "[name={0}, email={1}]", name, email);
+//
+//            context.renderMsg(msg);
+//        }
+//    }
+//
+//    /**
+//     * Register Step 2.
+//     *
+//     * @param context the specified context
+//     */
+//    @RequestProcessing(value = "/register2", method = HttpMethod.POST)
+//    @Before(UserRegister2Validation.class)
+//    public void register2(final RequestContext context) {
+//        context.renderJSON();
+//
+//        final HttpServletRequest request = context.getRequest();
+//        final HttpServletResponse response = context.getResponse();
+//        final JSONObject requestJSONObject = (JSONObject) context.attr(Keys.REQUEST);
+//
+//        final String password = requestJSONObject.optString(User.USER_PASSWORD); // Hashed
+//        final int appRole = requestJSONObject.optInt(UserExt.USER_APP_ROLE);
+//        final String referral = requestJSONObject.optString(Common.REFERRAL);
+//        final String userId = requestJSONObject.optString(UserExt.USER_T_ID);
+//
+//        String name = null;
+//        String email = null;
+//        try {
+//            final JSONObject user = userQueryService.getUser(userId);
+//            if (null == user) {
+//                context.renderMsg(langPropsService.get("registerFailLabel") + " - " + "User Not Found");
+//
+//                return;
+//            }
+//
+//            name = user.optString(User.USER_NAME);
+//            email = user.optString(User.USER_EMAIL);
+//
+//            user.put(UserExt.USER_APP_ROLE, appRole);
+//            user.put(User.USER_PASSWORD, password);
+//            user.put(UserExt.USER_STATUS, UserExt.USER_STATUS_C_VALID);
+//
+//            userMgmtService.addUser(user);
+//
+//            Sessions.login(response, userId, false);
+//
+//            final String ip = Requests.getRemoteAddr(request);
+//            userMgmtService.updateOnlineStatus(user.optString(Keys.OBJECT_ID), ip, true, true);
+//
+//            if (StringUtils.isNotBlank(referral) && !UserRegisterValidation.invalidUserName(referral)) {
+//                final JSONObject referralUser = userQueryService.getUserByName(referral);
+//                if (null != referralUser) {
+//                    final String referralId = referralUser.optString(Keys.OBJECT_ID);
+//                    pointtransferMgmtService.transfer(Pointtransfer.ID_C_SYS, userId,
+//                            Pointtransfer.TRANSFER_TYPE_C_INVITED_REGISTER,
+//                            Pointtransfer.TRANSFER_SUM_C_INVITE_REGISTER, referralId, System.currentTimeMillis(), "");
+//                    pointtransferMgmtService.transfer(Pointtransfer.ID_C_SYS, referralId,
+//                            Pointtransfer.TRANSFER_TYPE_C_INVITE_REGISTER,
+//                            Pointtransfer.TRANSFER_SUM_C_INVITE_REGISTER, userId, System.currentTimeMillis(), "");
+//
+//                    final JSONObject notification = new JSONObject();
+//                    notification.put(Notification.NOTIFICATION_USER_ID, referralId);
+//                    notification.put(Notification.NOTIFICATION_DATA_ID, userId);
+//                    notificationMgmtService.addInvitationLinkUsedNotification(notification);
+//                }
+//            }
+//
+//            final JSONObject ic = invitecodeQueryService.getInvitecodeByUserId(userId);
+//            if (null != ic && Invitecode.STATUS_C_UNUSED == ic.optInt(Invitecode.STATUS)) {
+//                ic.put(Invitecode.STATUS, Invitecode.STATUS_C_USED);
+//                ic.put(Invitecode.USER_ID, userId);
+//                ic.put(Invitecode.USE_TIME, System.currentTimeMillis());
+//                final String icId = ic.optString(Keys.OBJECT_ID);
+//
+//                invitecodeMgmtService.updateInvitecode(icId, ic);
+//
+//                final String icGeneratorId = ic.optString(Invitecode.GENERATOR_ID);
+//                if (StringUtils.isNotBlank(icGeneratorId) && !Pointtransfer.ID_C_SYS.equals(icGeneratorId)) {
+//                    pointtransferMgmtService.transfer(Pointtransfer.ID_C_SYS, icGeneratorId,
+//                            Pointtransfer.TRANSFER_TYPE_C_INVITECODE_USED,
+//                            Pointtransfer.TRANSFER_SUM_C_INVITECODE_USED, userId, System.currentTimeMillis(), "");
+//
+//                    final JSONObject notification = new JSONObject();
+//                    notification.put(Notification.NOTIFICATION_USER_ID, icGeneratorId);
+//                    notification.put(Notification.NOTIFICATION_DATA_ID, userId);
+//
+//                    notificationMgmtService.addInvitecodeUsedNotification(notification);
+//                }
+//            }
+//
+//            context.renderTrueResult();
+//
+//            LOGGER.log(Level.INFO, "Registered a user [name={0}, email={1}]", name, email);
+//        } catch (final ServiceException e) {
+//            final String msg = langPropsService.get("registerFailLabel") + " - " + e.getMessage();
+//            LOGGER.log(Level.ERROR, msg + " [name={0}, email={1}]", name, email);
+//
+//            context.renderMsg(msg);
+//        }
+//    }
 
     /**
      * Logins user.

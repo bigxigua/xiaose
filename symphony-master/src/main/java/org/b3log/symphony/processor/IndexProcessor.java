@@ -246,30 +246,34 @@ public class IndexProcessor {
     @Before({StopwatchStartAdvice.class})
     @After({PermissionGrant.class, StopwatchEndAdvice.class})
     public void showIndex(final RequestContext context) {
-        final JSONObject currentUser = Sessions.getUser();
-        if (null != currentUser) {
-            // 自定义首页跳转 https://github.com/b3log/symphony/issues/774
-            final String indexRedirectURL = currentUser.optString(UserExt.USER_INDEX_REDIRECT_URL);
-            if (StringUtils.isNotBlank(indexRedirectURL)) {
-                context.sendRedirect(indexRedirectURL);
 
-                return;
-            }
-        }
+        recent(context);
+        return;
 
-        final AbstractFreeMarkerRenderer renderer = new SkinRenderer(context, "index.ftl");
-        final Map<String, Object> dataModel = renderer.getDataModel();
-
-        final List<JSONObject> recentArticles = articleQueryService.getIndexRecentArticles();
-        dataModel.put(Common.RECENT_ARTICLES, recentArticles);
-
-        final List<JSONObject> perfectArticles = articleQueryService.getIndexPerfectArticles();
-        dataModel.put(Common.PERFECT_ARTICLES, perfectArticles);
-
-        dataModelService.fillHeaderAndFooter(context, dataModel);
-        dataModelService.fillIndexTags(dataModel);
-
-        dataModel.put(Common.SELECTED, Common.INDEX);
+//        final JSONObject currentUser = Sessions.getUser();
+//        if (null != currentUser) {
+//            // 自定义首页跳转 https://github.com/b3log/symphony/issues/774
+//            final String indexRedirectURL = currentUser.optString(UserExt.USER_INDEX_REDIRECT_URL);
+//            if (StringUtils.isNotBlank(indexRedirectURL)) {
+//                context.sendRedirect(indexRedirectURL);
+//
+//                return;
+//            }
+//        }
+//
+//        final AbstractFreeMarkerRenderer renderer = new SkinRenderer(context, "index.ftl");
+//        final Map<String, Object> dataModel = renderer.getDataModel();
+//
+//        final List<JSONObject> recentArticles = articleQueryService.getIndexRecentArticles();
+//        dataModel.put(Common.RECENT_ARTICLES, recentArticles);
+//
+//        final List<JSONObject> perfectArticles = articleQueryService.getIndexPerfectArticles();
+//        dataModel.put(Common.PERFECT_ARTICLES, perfectArticles);
+//
+//        dataModelService.fillHeaderAndFooter(context, dataModel);
+//        dataModelService.fillIndexTags(dataModel);
+//
+//        dataModel.put(Common.SELECTED, Common.INDEX);
     }
 
     /**
@@ -281,6 +285,10 @@ public class IndexProcessor {
     @Before({StopwatchStartAdvice.class, AnonymousViewCheck.class})
     @After({PermissionGrant.class, StopwatchEndAdvice.class})
     public void showRecent(final RequestContext context) {
+        recent(context);
+    }
+
+    private void recent(final RequestContext context) {
         final HttpServletRequest request = context.getRequest();
 
         final AbstractFreeMarkerRenderer renderer = new SkinRenderer(context, "recent.ftl");

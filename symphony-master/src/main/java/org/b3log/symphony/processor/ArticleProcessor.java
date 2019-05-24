@@ -882,12 +882,11 @@ public class ArticleProcessor {
             final boolean isFollowing = followQueryService.isFollowing(followerId, followingId, Follow.FOLLOWING_TYPE_C_USER);
             author.put(Common.IS_FOLLOWING, isFollowing);
         }
-        final JSONObject followerUsersResult = followQueryService.getFollowerUsers(followingId, 1, 10);
+        final JSONObject followerUsersResult = followQueryService.getFollowerUsers(followingId, 1, 20);
         final List<JSONObject> followerUsers = (List) followerUsersResult.opt(Keys.RESULTS);
         final int followerUserCnt = followerUsersResult.optInt(Pagination.PAGINATION_RECORD_COUNT);
         author.put(UserExt.USER_FOLLOWER_COUNT,followerUserCnt);
-        followerUsers.add(author);
-        author.put(UserExt.USER_FOLLOWER_LIST,followerUsers.toArray());
+        author.put(UserExt.USER_FOLLOWER_LIST,(Object) followerUsers);
     }
 
     /**

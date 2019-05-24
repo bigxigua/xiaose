@@ -27,7 +27,7 @@
  * @description Verify
  * @static
  */
-var Verify = {  
+var Verify = {
     /**
      * @description 登录
      */
@@ -80,31 +80,51 @@ var Verify = {
                     "target": $("#registerUserName"),
                     "msg": Label.invalidUserNameLabel,
                     "type": 'string',
-                    'max': 20
+                    'max': 16,
+                    'min':3
                 }, {
                     "target": $("#registerUserEmail"),
                     "msg": Label.invalidEmailLabel,
-                    "type": "email"
+                    "type": "phone"
+                },{
+                    "target": $("#registerUserPassword2"),
+                    "msg": Label.invalidPasswordLabel,
+                    "type": 'password',
+                    'max': 20
+                }, {
+                    "target": $("#registerConfirmPassword2"),
+                    "original": $("#registerUserPassword2"),
+                    "msg": Label.confirmPwdErrorLabel,
+                    "type": "confirmPassword"
+                },{
+                    "target": $("#phoneVerifyCode"),
+                    "msg": Label.invalidPhoneVerifyCodeLabel,
+                    "type": 'string',
+                    'max': 4,
+                    'min':4
                 }]})) {
             var requestJSONObject = {
                 userName: $("#registerUserName").val().replace(/(^\s*)|(\s*$)/g, ""),
                 userEmail: $("#registerUserEmail").val().replace(/(^\s*)|(\s*$)/g, ""),
                 invitecode: $("#registerInviteCode").val().replace(/(^\s*)|(\s*$)/g, ""),
+                phoneVerifyCode: $("#phoneVerifyCode").val().replace(/(^\s*)|(\s*$)/g, ""),
                 captcha: $("#registerCaptcha").val(),
-                referral: sessionStorage.r || ''
+                referral: sessionStorage.r || '',
+                userPassword: calcMD5($("#registerUserPassword2").val())
             };
 
             $("#registerBtn").attr('disabled', 'disabled');
 
             $.ajax({
-                url: Label.servePath + "/register",
+                url: Label.servePath + "/registerPhone",
                 type: "POST",
                 cache: false,
                 data: JSON.stringify(requestJSONObject),
                 success: function (result, textStatus) {
                     if (result.sc) {
-                        $("#registerTip").addClass('succ').removeClass('error').html('<ul><li>' + result.msg + '</li></ul>');
-                        $("#registerBtn").attr('disabled', 'disabled');
+                        // $("#registerTip").addClass('succ').removeClass('error').html('<ul><li>' + result.msg + '</li></ul>');
+                        // $("#registerBtn").attr('disabled', 'disabled');
+                        window.location.href = Label.servePath;
                     } else {
                         $("#registerTip").addClass('error').removeClass('succ').html('<ul><li>' + result.msg + '</li></ul>');
                         $("#registerCaptchaImg").attr("src", Label.servePath + "/captcha?code=" + Math.random());

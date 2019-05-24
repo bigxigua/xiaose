@@ -14,7 +14,7 @@ public class CommunalCache {
     /**
      * Communal cache.
      */
-    private static final Cache cache = CacheFactory.getCache("PUBLIC_CACHE");
+    private static final Cache cache = CacheFactory.getCache("PUBLIC_CACHE:");
 
     public Cache get() {
         return cache;

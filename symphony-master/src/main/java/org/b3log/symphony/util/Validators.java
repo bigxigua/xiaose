@@ -24,7 +24,7 @@ public class Validators {
     }
 
     public static boolean verifyUserName(String str) {
-        Matcher m = mobilePattern.matcher(str);
+        Matcher m = userNamePattern.matcher(str);
         return m.matches();
     }
 }
