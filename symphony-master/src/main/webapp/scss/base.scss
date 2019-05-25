@@ -1424,3 +1424,32 @@ a[class*=" icon-"]:hover {
   right: 15px;
   border-radius: 0 3px 3px 0;
 }
+.live_sym_select{
+  width: 248px;
+  height: 30px;
+  margin-top: 10px;
+}
+.lives_sym_lists{
+  ul{
+    margin: 0;
+    padding: 0;
+    li{
+      list-style:none;
+      margin-top: 7px;
+      display: flex;
+      align-items: center;
+      height: 22px;
+      a{
+        font-size: 14px;
+        color: #666666;
+      }
+      .dot{
+        width: 6px;
+        height: 6px;
+        background: #666666;
+        border-radius: 100%;
+        margin-right: 10px;
+      }
+    }
+  }
+}

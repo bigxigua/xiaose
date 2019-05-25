@@ -79,9 +79,9 @@ var Verify = {
             data: [{
                     "target": $("#registerUserName"),
                     "msg": Label.invalidUserNameLabel,
-                    "type": 'string',
+                    "type": 'userName',
                     'max': 16,
-                    'min':3
+                    'min':4
                 }, {
                     "target": $("#registerUserEmail"),
                     "msg": Label.invalidEmailLabel,

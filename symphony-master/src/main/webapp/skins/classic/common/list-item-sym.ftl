@@ -31,20 +31,14 @@
             <div class="post_info">
                 <a class="abstract" href="${servePath}${article.articlePermalink}">
                     ${article.articlePreviewContent}
-                    ${article.articlePreviewContent}
-                    ${article.articlePreviewContent}
-                    ${article.articlePreviewContent}
-                    ${article.articlePreviewContent} ${article.articlePreviewContent}
-                    ${article.articlePreviewContent}
-
                 </a>
                 <div class="reply_info">
                     <div class="reply_info_count">
                         <#if article.articleCommentCount != 0>
-                            <a class="ft-fade" href="${servePath}${article.articlePermalink}#comments"><b class="article-level<#if article.articleCommentCount lt 40>${(article.articleCommentCount/10)?int}<#else>4</#if>">${article.articleCommentCount}</b></a>
+                            <a class="ft-fade tooltipped tooltipped-se" aria-label="跟贴计数" href="${servePath}${article.articlePermalink}#comments"><b class="article-level<#if article.articleCommentCount lt 40>${(article.articleCommentCount/10)?int}<#else>4</#if>">${article.articleCommentCount}</b></a>
                         </#if>
                         <#if article.articleViewCount != 0>
-                            <a class="ft-fade" href="${servePath}${article.articlePermalink}">
+                            <a class="ft-fade  tooltipped tooltipped-se" href="${servePath}${article.articlePermalink}" aria-label="浏览计数">
                                 <span class="article-level<#if article.articleViewCount lt 400>${(article.articleViewCount/100)?int}<#else>4</#if>"><#if article.articleViewCount < 1000>${article.articleViewCount}<#else>${article.articleViewCntDisplayFormat}</#if></span>
                                </a>
                         </#if>

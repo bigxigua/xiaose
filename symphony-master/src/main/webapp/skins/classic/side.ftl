@@ -165,3 +165,27 @@
     </div>
 </div>
 </#if>
+<#if true>
+    <div class="module">
+        <div class="module-header">
+            <h2>直播</h2>
+        </div>
+        <select id="status" name="status" class="live_sym_select">
+            <option value="0" selected>魔兽世界</option>
+            <option value="0">星际争霸</option>
+<#--            <option value="1"<#if 1 == invitecode.status> selected</#if>>${unusedLabel}</option>-->
+<#--            <option value="2"<#if 2 == invitecode.status> selected</#if>>${stopUseLabel}</option>-->
+        </select>
+        <div class="module-panel lives_sym_lists">
+             <ul>
+                <#assign lives = ['魔兽争霸001', '魔兽争霸002', '魔兽争霸003', '魔兽争霸004']>
+                <#list lives as live>
+                    <li>
+                        <div class="dot"></div>
+                        <a href="#">${live}</a>
+                    </li>
+                </#list>
+             </ul>
+        </div>
+    </div>
+</#if>

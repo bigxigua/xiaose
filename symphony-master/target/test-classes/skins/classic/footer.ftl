@@ -36,7 +36,7 @@
                 <a href="${servePath}/tags">${tagLabel}</a>
                 <a href="${servePath}/statistic">${dataStatLabel}</a>
                 <div class="fn-right">
-                ${visionLabel}xx
+                ${visionLabel}
                 </div>
             </div>
             <div class="fn-clear ft-smaller">

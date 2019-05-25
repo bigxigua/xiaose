@@ -85,17 +85,6 @@
                         <div class="article_info_title">回贴</div>
                     </div>
                 </div>
-                <#if isLoggedIn && article.articleAuthorName != article.articleAuthor.userName>
-                    <#if isFollowing>
-                        <div class="follow_btn" onclick="Util.unfollow(this, '${article.articleAuthorId}', 'user')">
-                            关注
-                        </div>
-                    <#else>
-                        <div class="follow_btn follow_btn_unfollow" onclick="Util.follow(this, '${article.articleAuthorId}', 'user')">
-                            取消关注
-                        </div>
-                    </#if>
-                </#if>
             </div>
             <div class="fn-flex-1 fn-ellipsis article_content_sym">
                 <#if article.articleAnonymous == 0>
@@ -103,6 +92,17 @@
 
                 <#if 0 == article.articleAuthor.userUAStatus>
                     <span id="articltVia" class="ft-fade" data-ua="${article.articleUA}"></span>
+                </#if>
+                <#if isLoggedIn && article.articleAuthorName != article.articleAuthor.userName>
+                    <#if isFollowing>
+                        <div class="follow_btn_sym" onclick="Util.unfollow(this, '${article.articleAuthorId}', 'user')">
+                            关注
+                        </div>
+                    <#else>
+                        <div class="follow_btn_sym follow_btn_unfollow" onclick="Util.follow(this, '${article.articleAuthorId}', 'user')">
+                            取消关注
+                        </div>
+                    </#if>
                 </#if>
                 <br/>
                 <#if "" != article.articleAuthorIntro>
@@ -140,7 +140,7 @@
                             </span>
                 <div class="follows">
                     <#list article.articleAuthor.userFollowersList as follow>
-                        <a rel="tag" class="follow" href="${servePath}/member/${follow.userName}" style="background-image:url('${follow.userAvatarURL}')"></a>
+                        <a rel="tag" class="follow tooltipped tooltipped-se" href="${servePath}/member/${follow.userName}" aria-label="${follow.userName}" style="background-image:url('${follow.userAvatarURL}')"></a>
                     </#list>
 <#--                    <div class="dot">...</div>-->
                 </div>
