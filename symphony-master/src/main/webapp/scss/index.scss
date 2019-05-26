@@ -768,7 +768,6 @@ label.cmt-anonymous {
         }
         .reply_info{
           display: flex;
-          justify-content: space-around;
           position: absolute;
           right: 0;
           top: 0;
@@ -776,6 +775,7 @@ label.cmt-anonymous {
           width: 19%;
           .reply_info_count{
             float: left;
+            margin-right: 6px;
             a{
               display: block;
             }
