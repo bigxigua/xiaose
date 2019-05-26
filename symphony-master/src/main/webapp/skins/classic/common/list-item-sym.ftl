@@ -29,9 +29,21 @@
 <#--最多2行显示，置顶图标+内容-->
             <@icon article.articlePerfect article.articleType></@icon>
             <div class="post_info">
-                <a class="abstract" href="${servePath}${article.articlePermalink}">
-                    ${article.articlePreviewContent}
-                </a>
+                <div class="post_info_sym">
+                    <div class="abstract">
+                        <a href="${servePath}${article.articlePermalink}">
+                            ${article.articlePreviewContent}
+                        </a>
+<#--                        <#assign articleParticipants = ['111']>-->
+                        <div class="follows">
+                            <#list article.articleParticipants as follow>
+<#--                                <a rel="tag" class="follow tooltipped tooltipped-se" href="${servePath}/member/111" aria-label="1111" style="background-image:url('${'http://localhost:8080/images/user-thumbnail.png'}')"></a>-->
+                                <a rel="tag" class="follow tooltipped tooltipped-se" href="${servePath}/member/${follow.userName}" aria-label="${follow.userName}" style="background-image:url('${follow.userAvatarURL}')"></a>
+                            </#list>
+<#--                            <div class="dot">...</div>-->
+                        </div>
+                    </div>
+                </div>
                 <div class="reply_info">
                     <div class="reply_info_count">
                         <#if article.articleCommentCount != 0>
